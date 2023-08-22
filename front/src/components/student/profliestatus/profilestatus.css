@@ -1,0 +1,31 @@
+.info{
+    margin: 3rem auto;
+    display: flex;
+    flex-direction: column;
+    width: 80%;
+    align-items: center;
+}
+
+.info h2{
+    font-size: 2.2rem;
+    margin: 3rem auto;
+}
+.info-con{
+    display: flex;
+    justify-content: space-between;
+    direction: rtl;
+    gap: 3rem;
+    width: 100%;
+    margin: 3rem auto;
+}
+.sub-info{
+    display: flex;
+    flex-direction: column;
+    font-size: 2em;
+    align-items: center;
+    gap: .8rem;
+    font-weight: bold;
+}
+.sub-info .title{
+    color: #003C70;
+}

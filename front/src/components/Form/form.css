@@ -1,0 +1,106 @@
+.subCon {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-color: #fff;
+    margin: 3rem auto;
+    /* overflow-y: scroll; */
+
+}
+
+:where(.css-dev-only-do-not-override-14wwjjs).ant-upload-wrapper .ant-upload-list.ant-upload-list-picture .ant-upload-list-item {
+    height: 50%;
+}
+
+:where(.css-dev-only-do-not-override-14wwjjs).ant-upload-wrapper .ant-upload-list.ant-upload-list-picture .ant-upload-list-item .ant-upload-list-item-thumbnail {
+    width: 20%;
+    height: 20%;
+    /* height: min-content; */
+}
+
+.nav {
+    display: flex;
+    justify-content: space-evenly;
+    width: 100%;
+
+
+}
+
+.nav button {
+    margin-bottom: 2rem;
+    border: none;
+    font-size: 1.7rem;
+    border-radius: 25px;
+    padding: 1rem 2rem;
+    color: white;
+    min-width: 20%;
+    background-color: #AD8700;
+}
+
+.nav button:hover {
+    transition: all 0.2s ease-in-out;
+    box-shadow: 0 0 20px #AD8700;
+    cursor: pointer;
+}
+.prev{
+    width: fit-content;
+}
+/* .nav .prev{
+    background-color: #003C70;
+}
+*/
+.subCon .lan-btn:hover {
+    box-shadow: 0 0 10px #003C70;
+}
+
+/* .nav .page-n{
+  position: relative;
+  bottom: -2.5rem;
+
+  background-color:  #003C70;
+  color: #fff;
+  padding: .7rem 6rem;
+  border-radius: 50% 50% 0 0 ;
+} */
+.nav .page-n {
+    position: relative;
+    bottom: 0.5rem;
+    background-color: #003C70;
+    color: #fff;
+    padding: 1.5rem 1.3rem;
+    font-size: 1.3rem;
+    border-radius: 50%;
+    width: 8rem;
+    height: 5rem;
+    text-align: center;
+}
+
+.subCon .lan-btn {
+    border: none;
+    font-size: 1.5rem;
+    border-radius: 25px;
+    padding: 1rem 2rem;
+    color: white;
+    cursor: pointer;
+    background-color: #003C70;
+    position: absolute;
+    top: 1rem;
+    right: 2rem;
+}
+
+.body {
+    /*height: 50rem; */
+    width: 90%;
+    padding: 1rem;
+    border-color: #fff;
+    /* margin: 6rem auto;*/
+
+}
+
+/* @media only screen and (max-width: 1125px) {
+    .subCon {
+        overflow: scroll;
+    }
+} */

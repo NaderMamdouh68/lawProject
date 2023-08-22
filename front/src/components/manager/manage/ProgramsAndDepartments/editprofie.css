@@ -1,0 +1,89 @@
+.add-department {
+    display: flex;
+    direction: rtl;
+    gap: 1.5rem;
+    flex-direction: column;
+    justify-content: space-around;
+    flex-wrap: nowrap;
+}
+
+.program-data {
+    margin: 3rem 0;
+}
+
+.add-department input {
+    font-size: 17rem;
+    text-align: center;
+}
+
+.add-department select {
+    font-size: 1.7rem;
+    text-align: center;
+}
+
+.nm {
+    display: flex;
+    /* display: grid; */
+    width: 95%;
+    gap: 5rem;
+    justify-content: flex-end;
+    /* direction: rtl; */
+    flex-direction: row-reverse;
+    flex-wrap: nowrap;
+    align-items: center;
+}
+
+.nm input {
+    font-size: 2rem;
+    text-align: center;
+}
+
+.nm button {
+    font-size: 1.1rem;
+    border: 2px solid transparent;
+    padding: 10px;
+    border-radius: 15px;
+    background: #003C70;
+    color: white;
+    cursor: pointer;
+    transition: .7s ease;
+}
+
+input[type="checkbox"] {
+    display: none;
+    /* hide the actual checkboxes */
+}
+
+input[type="checkbox"]+label {
+    display: inline-block;
+    margin-bottom: 15px;
+    padding-left: 15rem;
+    position: relative;
+    font-size: 2rem;
+    cursor: pointer;
+    direction: unset;
+    width: 100%;
+}
+
+input[type="checkbox"]+label:before {
+    content: "";
+    display: inline-block;
+    width: 25px;
+    height: 25px;
+    margin-right: 10px;
+    position: absolute;
+    left: 0;
+    bottom: 1px;
+    border: 1px solid #ccc;
+    background-color: #fff;
+    border-radius: 3px;
+}
+
+input[type="checkbox"]:checked+label:before {
+    content: "\2713";
+    font-size: 18px;
+    color: #fff;
+    background-color: #007bff;
+    text-align: center;
+    line-height: 25px;
+}

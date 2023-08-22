@@ -1,0 +1,78 @@
+.Content {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: white;
+  gap: 15px;
+  margin-top: -5rem;
+}
+
+.Content p {
+  color: #AD8700;
+}
+
+.Content .options {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: center;
+  width: 100%;
+  gap: 2rem;
+}
+
+.Content .options button {
+  border: none;
+  font-size: 1.7rem;
+  border-radius: 25px;
+  padding: 1rem 2rem;
+  color: white;
+  cursor: pointer;
+  width: 100%;
+}
+
+.Content .options button:hover {
+  transition: all 0.2s ease-in-out;
+  box-shadow: 0 0 20px black;
+}
+
+.mini-logo {
+  width: 15%;
+  aspect-ratio: 1/1;
+}
+
+.Content .lan-btn {
+  border: none;
+  font-size: 1.5rem;
+  border-radius: 25px;
+  padding: 1rem 2rem;
+  color: white;
+  cursor: pointer;
+  background-color: #003C70;
+  position: absolute;
+  top: 1rem;
+  right: 2rem;
+}
+
+.Content .lan-btn:hover {
+  box-shadow: 0 0 10px #003C70;
+}
+.options a h1{
+  font-size: rem;
+  color: #003C70;
+}
+
+@media only screen and (max-width: 1140px) {
+  .Content {
+    width: 100%;
+  }
+  .mini-logo{
+    width: 30%;
+  }
+}
+@media only screen and (max-width: 440px) {
+  .mini-logo{
+    width: 60%;
+  }
+}

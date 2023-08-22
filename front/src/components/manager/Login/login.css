@@ -1,0 +1,26 @@
+.actions{
+    width: 70%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.actions button{
+    margin-bottom: 1rem;
+    border: none;
+    font-size: 1.5rem;
+    border-radius: 25px;
+    padding: 1rem 2rem;
+    color: white;
+    background-color: #AD8700;
+    width: 100%;
+}
+.actions button:hover{
+    transition: all 0.2s ease-in-out;
+    box-shadow: 0 0 20px #AD8700;
+    cursor: pointer;
+}
+.actions a{
+    font-size: 2rem;
+    text-decoration: underline;
+    color: black;
+}

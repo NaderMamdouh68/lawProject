@@ -1,0 +1,142 @@
+.cotainer-data {
+    width: 90%;
+    margin: 0 auto;
+    box-shadow: 0 3px 10px rgb(0 0 0 / 0.2);
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.cotainer-data h1 {
+    color: #AD8700;
+    font-size: 2rem;
+    margin-bottom: .6rem;
+}
+
+.navv {
+    width: 90%;
+    margin-top: 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 1rem;
+    margin: 2rem auto 0;
+
+}
+.image{
+    width: 80%;
+    border-radius: 10px;
+    margin: 3rem  auto 0;
+}
+.navv button {
+    font-size: 15px;
+    padding: 10px;
+    border-radius: 15px;
+    background: #003C70;
+    color: white;
+    border: none;
+    cursor: pointer;
+}
+.data-container{
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+}
+.data-table td input,
+.data-table td select{
+    background: transparent;
+    border: none;
+    font-size: 1.5rem;
+    text-align: center;
+    width: 100%;
+    cursor: pointer;
+}
+
+table {
+    font-family: arial, sans-serif;
+    border-collapse: collapse;
+    width: 95%;
+    margin: 23px 0;
+    background: white;
+    color: black;
+}
+
+td,
+th {
+    border: 1px solid #dddddd;
+    text-align: center;
+    padding: 8px;
+}
+td,
+th,
+tr,
+.input-cell{
+    font-size: 1.5rem;
+}
+
+
+tr:nth-child(even) {
+    background: #dddddd;
+}
+
+.profile-table{
+    width: 80%;
+    margin: 0 auto;
+}
+
+.profile-table .atch-btn{
+    font-size: 20px;
+    padding: 5px 8px;
+    border: none;
+    border-radius: 10px;
+    color: #fff;
+    cursor: pointer;
+    margin: 6px 11px;
+}
+.profile-table .atch-btn:hover{
+    box-shadow: 5px 10px 10px #888888;
+}
+
+.data-table .input-cell{
+    outline: none;
+    background: transparent;
+    border: 1px solid transparent;
+    text-align: center;
+    padding: 5px 0;
+    width: 100%;
+    /* font-size: 1rem; */
+}
+
+.data-table .input-cell:focus{
+    border: 1px solid #000;
+}
+
+tr:nth-child(odd) .input-cell:focus{
+    background: #dddddd;
+    border: 1px solid #000;
+}
+
+.cotainer-data .confirm-btn{
+    margin: 5rem 0;
+    width: 90%;
+    color: white;
+    padding: 1rem;
+    background: rgb(0, 60, 112);
+    font-size: 2rem;
+    border: transparent;
+    text-transform: uppercase;
+    background: #003C70;
+    border-radius: 10px;
+}
+
+.cotainer-data .confirm-btn:hover{
+    cursor: pointer;
+    background-color: #002a4d;
+    box-shadow: 5px 10px 10px #888888;
+}
+@media only screen and (max-width: 500px) {
+    .data-container{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+  }

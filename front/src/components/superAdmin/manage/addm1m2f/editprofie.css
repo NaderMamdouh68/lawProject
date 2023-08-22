@@ -1,0 +1,45 @@
+.add-department{
+    display: flex;
+    direction: rtl;
+    gap: 1.5rem;
+    flex-direction: column;
+    justify-content: space-around;
+    flex-wrap: nowrap;
+padding: 1rem;
+}
+.program-data{
+    margin: 3rem 0;
+}
+.add-department input{
+    font-size: 17rem;
+    text-align: center;
+}
+.add-department select{
+    font-size: 1.7rem;
+    text-align: center;
+}
+.nm {
+    display: flex;
+    /* display: grid; */
+    width: 95%;
+    gap: 5rem;
+    justify-content: flex-end;
+    /* direction: rtl; */
+    flex-direction: column;
+    flex-wrap: nowrap;
+    align-items: center;
+}
+.nm input{
+    font-size: 2rem;
+    text-align: center;
+}
+.nm button{
+    font-size: 1.1rem;
+    border: 2px solid transparent;
+    padding: 10px;
+    border-radius: 15px;
+    background: #003C70;
+    color: white;
+    cursor: pointer;
+    transition: .7s ease;
+}
