@@ -83,7 +83,7 @@ const ManagerLogin = () => {
                             </div>
                             <div className="actions">
                                 <button onClick={handleLogin}> تسجيل الدخول </button>
-                                <a href='https://drive.google.com/file/d/1JTYhX7MgzTP2wWyF65WG25eNHwXgP7kd/view?usp=sharing' target='_blank' style={{fontSize:"2rem" ,color:"#003C70"}}>شرح اداره حساب موظف الكليه</a>
+                                {/* <a href='https://drive.google.com/file/d/1JTYhX7MgzTP2wWyF65WG25eNHwXgP7kd/view?usp=sharing' target='_blank' style={{fontSize:"2rem" ,color:"#003C70"}}>شرح اداره حساب موظف الكليه</a> */}
                             </div>
                         </div>
 
