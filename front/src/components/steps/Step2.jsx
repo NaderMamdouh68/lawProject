@@ -6,6 +6,12 @@ import { GrMail } from 'react-icons/gr'
 import { FaPhone } from 'react-icons/fa'
 import { BsFillPersonVcardFill } from 'react-icons/bs'
 import { BsFillCalendar2DateFill } from 'react-icons/bs'
+import { GoLog } from 'react-icons/go'
+import { PiListNumbers } from 'react-icons/pi'
+import { GoNumber } from 'react-icons/go'
+import { BiSolidSchool } from 'react-icons/bi'
+import { GiRotaryPhone } from 'react-icons/gi'
+
 const Step2 = ({ Faculties, UserData, SetUserData, Departments, Programs, Error }) => {
 
   const [t] = useTranslation();
@@ -45,8 +51,35 @@ const Step2 = ({ Faculties, UserData, SetUserData, Departments, Programs, Error 
           </div>
         </div>
         <div className="input-container" style={localStorage.getItem('i18nextLng') == "ar" ? { direction: "rtl" } : { direction: "ltr" }}>
+          <BsFillPersonVcardFill style={UserData.national_id == "" ? null : { marginTop: '1.5rem' }} className='Icon' />
+          <div className='edit-input' style={localStorage.getItem('i18nextLng') == "ar" ? { direction: "rtl" } : { direction: "ltr" }}>
+            {UserData.national_id == "" ? null : <h1 style={{ color: "#AD8700" }}>{t('n-id')} </h1>}
+            <input
+              type="text"
+              placeholder={t('n-id')}
+              className='inputIN'
+              style={localStorage.getItem('i18nextLng') == "ar" ? { direction: "rtl" } : { direction: "ltr" }}
+              value={UserData.national_id} onChange={(e) => { SetUserData({ ...UserData, national_id: e.target.value }) }}
+            />
+          </div>
+        </div>
+        <div className="input-container" style={localStorage.getItem('i18nextLng') == "ar" ? { direction: "rtl" } : { direction: "ltr" }}>
+          <FaPhone style={UserData.phone == "" ? null : { marginTop: '1.5rem' }} className='Icon' />
+          <div className='edit-input' style={localStorage.getItem('i18nextLng') == "ar" ? { direction: "rtl" } : { direction: "ltr" }}>
+            {UserData.phone == "" ? null : <h1 style={{ color: "#AD8700" }}>{t('phone')} </h1>}
+            <input
+              type="text"
+              placeholder={t('phone')}
+              className='inputIN'
+              style={localStorage.getItem('i18nextLng') == "ar" ? { direction: "rtl" } : { direction: "ltr" }}
+              value={UserData.phone} onChange={(e) => { SetUserData({ ...UserData, phone: e.target.value }) }}
+            />
+          </div>
+        </div>
+        
+        <div className="input-container" style={localStorage.getItem('i18nextLng') == "ar" ? { direction: "rtl" } : { direction: "ltr" }}>
 
-          <BiSolidUser style={UserData.adress == "" ? null : { marginTop: '1.5rem' }} className='Icon' />
+          <BsFillPersonVcardFill style={UserData.adress == "" ? null : { marginTop: '1.5rem' }} className='Icon' />
           <div className='edit-input' style={localStorage.getItem('i18nextLng') == "ar" ? { direction: "rtl" } : { direction: "ltr" }}>
             {UserData.adress == "" ? null : <h1 style={{ color: "#AD8700" }}>{t('adress')} </h1>}
             <input
@@ -63,7 +96,7 @@ const Step2 = ({ Faculties, UserData, SetUserData, Departments, Programs, Error 
         </div>
         <div className="input-container" style={localStorage.getItem('i18nextLng') == "ar" ? { direction: "rtl" } : { direction: "ltr" }}>
 
-          <BiSolidUser style={UserData.nationality == "" ? null : { marginTop: '1.5rem' }} className='Icon' />
+          <GoLog style={UserData.nationality == "" ? null : { marginTop: '1.5rem' }} className='Icon' />
           <div className='edit-input' style={localStorage.getItem('i18nextLng') == "ar" ? { direction: "rtl" } : { direction: "ltr" }}>
             {UserData.nationality == "" ? null : <h1 style={{ color: "#AD8700" }}>{t('nationality')} </h1>}
             <input
@@ -79,25 +112,23 @@ const Step2 = ({ Faculties, UserData, SetUserData, Departments, Programs, Error 
           </div>
         </div>
         <div className="input-container" style={localStorage.getItem('i18nextLng') == "ar" ? { direction: "rtl" } : { direction: "ltr" }}>
-
-          <BiSolidUser style={UserData.previous_qu == "" ? null : { marginTop: '1.5rem' }} className='Icon' />
+          <GrMail style={UserData.email == "" ? null : { marginTop: '1.5rem' }} className='Icon' />
           <div className='edit-input' style={localStorage.getItem('i18nextLng') == "ar" ? { direction: "rtl" } : { direction: "ltr" }}>
-            {UserData.previous_qu == "" ? null : <h1 style={{ color: "#AD8700" }}>{t('previous_qu')} </h1>}
+            {UserData.email == "" ? null : <h1 style={{ color: "#AD8700" }}>{t('email')} </h1>}
             <input
               type="text"
-              required
-              placeholder={t('previous_qu')}
+              placeholder={t('email')}
               className='inputIN'
-              value={UserData.previous_qu}
+              value={UserData.email}
               style={localStorage.getItem('i18nextLng') == "ar" ? { direction: "rtl" } : { direction: "ltr" }}
-              onChange={(e) => { SetUserData({ ...UserData, previous_qu: e.target.value }) }}
-
+              onChange={(e) => { SetUserData({ ...UserData, email: e.target.value }) }}
             />
           </div>
         </div>
+        
         <div className="input-container" style={localStorage.getItem('i18nextLng') == "ar" ? { direction: "rtl" } : { direction: "ltr" }}>
 
-          <BiSolidUser style={UserData.setNum == "" ? null : { marginTop: '1.5rem' }} className='Icon' />
+          <PiListNumbers style={UserData.setNum == "" ? null : { marginTop: '1.5rem' }} className='Icon' />
           <div className='edit-input' style={localStorage.getItem('i18nextLng') == "ar" ? { direction: "rtl" } : { direction: "ltr" }}>
             {UserData.setNum == "" ? null : <h1 style={{ color: "#AD8700" }}>{t('setNum')} </h1>}
             <input
@@ -114,7 +145,7 @@ const Step2 = ({ Faculties, UserData, SetUserData, Departments, Programs, Error 
         </div>
         <div className="input-container" style={localStorage.getItem('i18nextLng') == "ar" ? { direction: "rtl" } : { direction: "ltr" }}>
 
-          <BiSolidUser style={UserData.enDeg == "" ? null : { marginTop: '1.5rem' }} className='Icon' />
+          <PiListNumbers style={UserData.enDeg == "" ? null : { marginTop: '1.5rem' }} className='Icon' />
           <div className='edit-input' style={localStorage.getItem('i18nextLng') == "ar" ? { direction: "rtl" } : { direction: "ltr" }}>
             {UserData.enDeg == "" ? null : <h1 style={{ color: "#AD8700" }}>{t('enDeg')} </h1>}
             <input
@@ -131,7 +162,7 @@ const Step2 = ({ Faculties, UserData, SetUserData, Departments, Programs, Error 
         </div>
         <div className="input-container" style={localStorage.getItem('i18nextLng') == "ar" ? { direction: "rtl" } : { direction: "ltr" }}>
 
-          <BiSolidUser style={UserData.enDeg2 == "" ? null : { marginTop: '1.5rem' }} className='Icon' />
+          <PiListNumbers style={UserData.enDeg2 == "" ? null : { marginTop: '1.5rem' }} className='Icon' />
           <div className='edit-input' style={localStorage.getItem('i18nextLng') == "ar" ? { direction: "rtl" } : { direction: "ltr" }}>
             {UserData.enDeg2 == "" ? null : <h1 style={{ color: "#AD8700" }}>{t('enDeg2')} </h1>}
             <input
@@ -148,7 +179,7 @@ const Step2 = ({ Faculties, UserData, SetUserData, Departments, Programs, Error 
         </div>
         <div className="input-container" style={localStorage.getItem('i18nextLng') == "ar" ? { direction: "rtl" } : { direction: "ltr" }}>
 
-          <BiSolidUser style={UserData.totalDeg == "" ? null : { marginTop: '1.5rem' }} className='Icon' />
+          <GoNumber style={UserData.totalDeg == "" ? null : { marginTop: '1.5rem' }} className='Icon' />
           <div className='edit-input' style={localStorage.getItem('i18nextLng') == "ar" ? { direction: "rtl" } : { direction: "ltr" }}>
             {UserData.totalDeg == "" ? null : <h1 style={{ color: "#AD8700" }}>{t('totalDeg')} </h1>}
             <input
@@ -165,7 +196,24 @@ const Step2 = ({ Faculties, UserData, SetUserData, Departments, Programs, Error 
         </div>
         <div className="input-container" style={localStorage.getItem('i18nextLng') == "ar" ? { direction: "rtl" } : { direction: "ltr" }}>
 
-          <BiSolidUser style={UserData.school == "" ? null : { marginTop: '1.5rem' }} className='Icon' />
+          <GoLog style={UserData.previous_qu == "" ? null : { marginTop: '1.5rem' }} className='Icon' />
+          <div className='edit-input' style={localStorage.getItem('i18nextLng') == "ar" ? { direction: "rtl" } : { direction: "ltr" }}>
+            {UserData.previous_qu == "" ? null : <h1 style={{ color: "#AD8700" }}>{t('previous_qu')} </h1>}
+            <input
+              type="text"
+              required
+              placeholder={t('previous_qu')}
+              className='inputIN'
+              value={UserData.previous_qu}
+              style={localStorage.getItem('i18nextLng') == "ar" ? { direction: "rtl" } : { direction: "ltr" }}
+              onChange={(e) => { SetUserData({ ...UserData, previous_qu: e.target.value }) }}
+
+            />
+          </div>
+        </div>
+        <div className="input-container" style={localStorage.getItem('i18nextLng') == "ar" ? { direction: "rtl" } : { direction: "ltr" }}>
+
+          <BiSolidSchool style={UserData.school == "" ? null : { marginTop: '1.5rem' }} className='Icon' />
           <div className='edit-input' style={localStorage.getItem('i18nextLng') == "ar" ? { direction: "rtl" } : { direction: "ltr" }}>
             {UserData.school == "" ? null : <h1 style={{ color: "#AD8700" }}>{t('school')} </h1>}
             <input
@@ -210,48 +258,11 @@ const Step2 = ({ Faculties, UserData, SetUserData, Departments, Programs, Error 
             />
           </div>
         </div>
+        
+        
+        
         <div className="input-container" style={localStorage.getItem('i18nextLng') == "ar" ? { direction: "rtl" } : { direction: "ltr" }}>
-          <BsFillPersonVcardFill style={UserData.national_id == "" ? null : { marginTop: '1.5rem' }} className='Icon' />
-          <div className='edit-input' style={localStorage.getItem('i18nextLng') == "ar" ? { direction: "rtl" } : { direction: "ltr" }}>
-            {UserData.national_id == "" ? null : <h1 style={{ color: "#AD8700" }}>{t('n-id')} </h1>}
-            <input
-              type="text"
-              placeholder={t('n-id')}
-              className='inputIN'
-              style={localStorage.getItem('i18nextLng') == "ar" ? { direction: "rtl" } : { direction: "ltr" }}
-              value={UserData.national_id} onChange={(e) => { SetUserData({ ...UserData, national_id: e.target.value }) }}
-            />
-          </div>
-        </div>
-        <div className="input-container" style={localStorage.getItem('i18nextLng') == "ar" ? { direction: "rtl" } : { direction: "ltr" }}>
-          <GrMail style={UserData.email == "" ? null : { marginTop: '1.5rem' }} className='Icon' />
-          <div className='edit-input' style={localStorage.getItem('i18nextLng') == "ar" ? { direction: "rtl" } : { direction: "ltr" }}>
-            {UserData.email == "" ? null : <h1 style={{ color: "#AD8700" }}>{t('email')} </h1>}
-            <input
-              type="text"
-              placeholder={t('email')}
-              className='inputIN'
-              value={UserData.email}
-              style={localStorage.getItem('i18nextLng') == "ar" ? { direction: "rtl" } : { direction: "ltr" }}
-              onChange={(e) => { SetUserData({ ...UserData, email: e.target.value }) }}
-            />
-          </div>
-        </div>
-        <div className="input-container" style={localStorage.getItem('i18nextLng') == "ar" ? { direction: "rtl" } : { direction: "ltr" }}>
-          <FaPhone style={UserData.phone == "" ? null : { marginTop: '1.5rem' }} className='Icon' />
-          <div className='edit-input' style={localStorage.getItem('i18nextLng') == "ar" ? { direction: "rtl" } : { direction: "ltr" }}>
-            {UserData.phone == "" ? null : <h1 style={{ color: "#AD8700" }}>{t('phone')} </h1>}
-            <input
-              type="text"
-              placeholder={t('phone')}
-              className='inputIN'
-              style={localStorage.getItem('i18nextLng') == "ar" ? { direction: "rtl" } : { direction: "ltr" }}
-              value={UserData.phone} onChange={(e) => { SetUserData({ ...UserData, phone: e.target.value }) }}
-            />
-          </div>
-        </div>
-        <div className="input-container" style={localStorage.getItem('i18nextLng') == "ar" ? { direction: "rtl" } : { direction: "ltr" }}>
-          <FaPhone style={UserData.phoneArd == "" ? null : { marginTop: '1.5rem' }} className='Icon' />
+          <GiRotaryPhone style={UserData.phoneArd == "" ? null : { marginTop: '1.5rem' }} className='Icon' />
           <div className='edit-input' style={localStorage.getItem('i18nextLng') == "ar" ? { direction: "rtl" } : { direction: "ltr" }}>
             {UserData.phoneArd == "" ? null : <h1 style={{ color: "#AD8700" }}>{t('phoneArd')} </h1>}
             <input
