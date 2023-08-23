@@ -1,6 +1,5 @@
 {
-    "welcome": "Welcome to the Faculty of Law at Helwan University",
-    "mini-title": "New applicant services",
+    "welcome": "Welcome to apply for the distinguished programs at the Faculty of Law at Helwan University",    "mini-title": "New applicant services",
     "new": "New applicant",
     "new-app-question": "New applicant....??",
     "con": "Applicant status",
@@ -47,8 +46,7 @@
     "Master": "Master's",
     "PhD": "Ph.D",
     "collage": "faculty",
-    "department": "department",
-    "program": "program",
+    "department": "program",
     "melatary": "melatary service",
     "exemption": "Exemption",
     "postponed": "postponed",
