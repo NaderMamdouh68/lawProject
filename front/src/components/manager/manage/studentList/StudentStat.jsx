@@ -15,7 +15,7 @@ const StudentStat = () => {
   useEffect(() => {
     try {
       axios.defaults.withCredentials = true
-      axios.get('http://localhost:5002/manager/allaaplication', { withCredentials: true })
+      axios.get('http://graduate-programs.helwan.edu.eg/law/manager/allaaplication', { withCredentials: true })
         .then((res) => {
           setStudent(res.data)
           setFilter(res.data)
@@ -30,7 +30,7 @@ const StudentStat = () => {
 
     try {
       axios.defaults.withCredentials = true
-      axios.get('http://localhost:5002/manager/alldepartment', { withCredentials: true })
+      axios.get('http://graduate-programs.helwan.edu.eg/law/manager/alldepartment', { withCredentials: true })
         .then((res) => {
           setDepartment(res.data)
           

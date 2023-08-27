@@ -21,7 +21,7 @@ const SuperAdminShow = () => {
   const [user, setUser] = React.useState({})
   axios.defaults.withCredentials = true
   useEffect(() => {
-    axios.get('http://localhost:5002/student/studentdetailsReport/' + id, { withCredentials: true })
+    axios.get('http://graduate-programs.helwan.edu.eg/law/student/studentdetailsReport/' + id, { withCredentials: true })
       .then((res) => {
         setUser(res.data)
       }).catch((error) => {
@@ -74,7 +74,7 @@ const SuperAdminShow = () => {
         </div>
         <div className="data-container" ref={pdfRef}>
           <div className='image-con'>
-            <img src={`http://localhost:5002/${user.national_id}/${user.img}`} alt="img" className='imagee' />
+            <img src={`http://graduate-programs.helwan.edu.eg/law/${user.national_id}/${user.img}`} alt="img" className='imagee' />
             {
               user.status == 0 ? <div className='status-con'>
                 <p className='status' style={{ background: '#FF0000' }}>مرفوض من الكليه</p>
@@ -190,11 +190,11 @@ const SuperAdminShow = () => {
             <td>صورة البطاقه الشخصيه</td>
             <td className='att-row'>
               <button
-                onClick={() => { openImage(`http://localhost:5002/${user.national_id}/${user.photo_national_id}`) }}
+                onClick={() => { openImage(`http://graduate-programs.helwan.edu.eg/law/${user.national_id}/${user.photo_national_id}`) }}
                 style={{ background: "#003C70" }} class="atch-btn">Open
               </button>
               <button
-                onClick={() => { downloadImage(`http://localhost:5002/${user.national_id}/${user.photo_national_id}`) }}
+                onClick={() => { downloadImage(`http://graduate-programs.helwan.edu.eg/law/${user.national_id}/${user.photo_national_id}`) }}
                 style={{ background: "#AD8700" }} class="atch-btn">Download
               </button>
 
@@ -208,11 +208,11 @@ const SuperAdminShow = () => {
             <td>صورة شهاده الميلاد</td>
             <td className='att-row'>
               <button
-                onClick={() => { openImage(`http://localhost:5002/${user.national_id}/${user.birth_certificate}`) }}
+                onClick={() => { openImage(`http://graduate-programs.helwan.edu.eg/law/${user.national_id}/${user.birth_certificate}`) }}
                 style={{ background: "#003C70" }} class="atch-btn">Open
               </button>
               <button
-                onClick={() => { downloadImage(`http://localhost:5002/${user.national_id}/${user.birth_certificate}`) }}
+                onClick={() => { downloadImage(`http://graduate-programs.helwan.edu.eg/law/${user.national_id}/${user.birth_certificate}`) }}
                 style={{ background: "#AD8700" }} class="atch-btn">Download
               </button>
 
@@ -227,11 +227,11 @@ const SuperAdminShow = () => {
             <td>صورة المؤهل</td>
             <td className='att-row'>
               <button
-                onClick={() => { openImage(`http://localhost:5002/${user.national_id}/${user.academic_qualification}`) }}
+                onClick={() => { openImage(`http://graduate-programs.helwan.edu.eg/law/${user.national_id}/${user.academic_qualification}`) }}
                 style={{ background: "#003C70" }} class="atch-btn">Open
               </button>
               <button
-                onClick={() => { downloadImage(`http://localhost:5002/${user.national_id}/${user.academic_qualification}`) }}
+                onClick={() => { downloadImage(`http://graduate-programs.helwan.edu.eg/law/${user.national_id}/${user.academic_qualification}`) }}
                 style={{ background: "#AD8700" }} class="atch-btn">Download
               </button>
 
@@ -246,11 +246,11 @@ const SuperAdminShow = () => {
             <td>صورة بيان الدرجات</td>
             <td className='att-row'>
               <button
-                onClick={() => { openImage(`http://localhost:5002/${user.national_id}/${user.grade_statement}`) }}
+                onClick={() => { openImage(`http://graduate-programs.helwan.edu.eg/law/${user.national_id}/${user.grade_statement}`) }}
                 style={{ background: "#003C70" }} class="atch-btn">Open
               </button>
               <button
-                onClick={() => { downloadImage(`http://localhost:5002/${user.national_id}/${user.grade_statement}`) }}
+                onClick={() => { downloadImage(`http://graduate-programs.helwan.edu.eg/law/${user.national_id}/${user.grade_statement}`) }}
                 style={{ background: "#AD8700" }} class="atch-btn">Download
               </button>
 
@@ -265,11 +265,11 @@ const SuperAdminShow = () => {
             <td>صورة استمارة حسن سير وسلوك</td>
             <td className='att-row'>
               <button
-                onClick={() => { openImage(`http://localhost:5002/${user.national_id}/${user.good_conduct_form}`) }}
+                onClick={() => { openImage(`http://graduate-programs.helwan.edu.eg/law/${user.national_id}/${user.good_conduct_form}`) }}
                 style={{ background: "#003C70" }} class="atch-btn">Open
               </button>
               <button
-                onClick={() => { downloadImage(`http://localhost:5002/${user.national_id}/${user.good_conduct_form}`) }}
+                onClick={() => { downloadImage(`http://graduate-programs.helwan.edu.eg/law/${user.national_id}/${user.good_conduct_form}`) }}
                 style={{ background: "#AD8700" }} class="atch-btn">Download
               </button>
 
@@ -284,11 +284,11 @@ const SuperAdminShow = () => {
             <td>صورة موافقة جهة العمل</td>
             <td className='att-row'>
               <button
-                onClick={() => { openImage(`http://localhost:5002/${user.national_id}/${user.approval_from_employer}`) }}
+                onClick={() => { openImage(`http://graduate-programs.helwan.edu.eg/law/${user.national_id}/${user.approval_from_employer}`) }}
                 style={{ background: "#003C70" }} class="atch-btn">Open
               </button>
               <button
-                onClick={() => { downloadImage(`http://localhost:5002/${user.national_id}/${user.approval_from_employer}`) }}
+                onClick={() => { downloadImage(`http://graduate-programs.helwan.edu.eg/law/${user.national_id}/${user.approval_from_employer}`) }}
                 style={{ background: "#AD8700" }} class="atch-btn">Download
               </button>
 
@@ -303,11 +303,11 @@ const SuperAdminShow = () => {
             <td>صورة الموقف من التجنيد</td>
             <td className='att-row'>
               <button
-                onClick={() => { openImage(`http://localhost:5002/${user.national_id}/${user.position_on_military}`) }}
+                onClick={() => { openImage(`http://graduate-programs.helwan.edu.eg/law/${user.national_id}/${user.position_on_military}`) }}
                 style={{ background: "#003C70" }} class="atch-btn">Open
               </button>
               <button
-                onClick={() => { downloadImage(`http://localhost:5002/${user.national_id}/${user.position_on_military}`) }}
+                onClick={() => { downloadImage(`http://graduate-programs.helwan.edu.eg/law/${user.national_id}/${user.position_on_military}`) }}
                 style={{ background: "#AD8700" }} class="atch-btn">Download
               </button>
               
@@ -320,11 +320,11 @@ const SuperAdminShow = () => {
             <td>صوره الماجستير</td>
             <td className='att-row'>
               <button
-                onClick={() => { openImage(`http://localhost:5002/${user.national_id}/${user.masters_photo}`) }}
+                onClick={() => { openImage(`http://graduate-programs.helwan.edu.eg/law/${user.national_id}/${user.masters_photo}`) }}
                 style={{ background: "#003C70" }} class="atch-btn">Open
               </button>
               <button
-                onClick={() => { downloadImage(`http://localhost:5002/${user.national_id}/${user.masters_photo}`) }}
+                onClick={() => { downloadImage(`http://graduate-programs.helwan.edu.eg/law/${user.national_id}/${user.masters_photo}`) }}
                 style={{ background: "#AD8700" }} class="atch-btn">Download
               </button>
 

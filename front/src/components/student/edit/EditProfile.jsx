@@ -37,7 +37,7 @@ const EditProfile = () => {
   useEffect(() => {
     axios.defaults.withCredentials = true
 
-    axios.get('http://localhost:5002/student/studentdetails', { withCredentials: true })
+    axios.get('http://graduate-programs.helwan.edu.eg/law/student/studentdetails', { withCredentials: true })
       .then((res) => {
         setData(res.data)
       }).catch((error) => {
@@ -49,7 +49,7 @@ const EditProfile = () => {
     axios.defaults.withCredentials = false
 
 
-    axios.get('http://localhost:5002/getdepartment')
+    axios.get('http://graduate-programs.helwan.edu.eg/law/getdepartment')
       .then((res) => {
         setDepartments(res.data)
       }
@@ -123,7 +123,7 @@ const EditProfile = () => {
 
 
       try {
-        axios.put('http://localhost:5002/student/studentupdate', formData, {
+        axios.put('http://graduate-programs.helwan.edu.eg/law/student/studentupdate', formData, {
           withCredentials: true,
 
           onUploadProgress: (progressEvent) => {
@@ -174,7 +174,7 @@ const EditProfile = () => {
         </div>
         <div className="data-container">
           <div className='image-con'>
-            <img src={`http://localhost:5002/${data.national_id}/${data.img}`} alt="" className="image" />
+            <img src={`http://graduate-programs.helwan.edu.eg/law/${data.national_id}/${data.img}`} alt="" className="image" />
             <button
               onClick={() => { changeimage('image1', 'image11') }}
               style={{ background: "#003C70" }} class="atch-btn">{t('change')}
@@ -414,11 +414,11 @@ const EditProfile = () => {
               <td>{t('img-profile-2')}</td>
               <td className='att-row'>
                 <button
-                  onClick={() => { openImage(`http://localhost:5002/${data.national_id}/${data.photo_national_id}`) }}
+                  onClick={() => { openImage(`http://graduate-programs.helwan.edu.eg/law/${data.national_id}/${data.photo_national_id}`) }}
                   style={{ background: "#003C70" }} class="atch-btn">{t('open')}
                 </button>
                 <button
-                  onClick={() => { downloadImage(`http://localhost:5002/${data.national_id}/${data.photo_national_id}`) }}
+                  onClick={() => { downloadImage(`http://graduate-programs.helwan.edu.eg/law/${data.national_id}/${data.photo_national_id}`) }}
                   style={{ background: "#AD8700" }} class="atch-btn">{t('download')}
                 </button>
                 <button
@@ -438,11 +438,11 @@ const EditProfile = () => {
               <td>{t('img-profile-3')}</td>
               <td className='att-row'>
                 <button
-                  onClick={() => { openImage(`http://localhost:5002/${data.national_id}/${data.birth_certificate}`) }}
+                  onClick={() => { openImage(`http://graduate-programs.helwan.edu.eg/law/${data.national_id}/${data.birth_certificate}`) }}
                   style={{ background: "#003C70" }} class="atch-btn">{t('open')}
                 </button>
                 <button
-                  onClick={() => { downloadImage(`http://localhost:5002/${data.national_id}/${data.birth_certificate}`) }}
+                  onClick={() => { downloadImage(`http://graduate-programs.helwan.edu.eg/law/${data.national_id}/${data.birth_certificate}`) }}
                   style={{ background: "#AD8700" }} class="atch-btn">{t('download')}
                 </button>
                 <button
@@ -460,11 +460,11 @@ const EditProfile = () => {
               <td>{t('img-profile-4')}</td>
               <td className='att-row'>
                 <button
-                  onClick={() => { openImage(`http://localhost:5002/${data.national_id}/${data.academic_qualification}`) }}
+                  onClick={() => { openImage(`http://graduate-programs.helwan.edu.eg/law/${data.national_id}/${data.academic_qualification}`) }}
                   style={{ background: "#003C70" }} class="atch-btn">{t('open')}
                 </button>
                 <button
-                  onClick={() => { downloadImage(`http://localhost:5002/${data.national_id}/${data.academic_qualification}`) }}
+                  onClick={() => { downloadImage(`http://graduate-programs.helwan.edu.eg/law/${data.national_id}/${data.academic_qualification}`) }}
                   style={{ background: "#AD8700" }} class="atch-btn">{t('download')}
                 </button>
                 <button

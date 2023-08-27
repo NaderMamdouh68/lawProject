@@ -21,7 +21,7 @@ const ManagerLogin = () => {
     const handleLogin = (e) => {
         e.preventDefault()
         try {
-            axios.post('http://localhost:5002/managerlog/login', loginData, { withCredentials: true })
+            axios.post('http://graduate-programs.helwan.edu.eg/law/managerlog/login', loginData, { withCredentials: true })
                 .then((res) => {
                     if(res.data.first == true && res.data.manager == true){
                         navigate('/managerLogin/restpass')

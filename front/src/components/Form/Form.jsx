@@ -63,7 +63,7 @@ const Form = () => {
 
   useEffect(() => {
     try {
-      axios.get('http://localhost:5002/getfaculty')
+      axios.get('http://graduate-programs.helwan.edu.eg/law/getfaculty')
         .then((res) => {
           setFaculties(res.data)
 
@@ -74,7 +74,7 @@ const Form = () => {
     }
 
     try {
-      axios.get('http://localhost:5002/getdepartment')
+      axios.get('http://graduate-programs.helwan.edu.eg/law/getdepartment')
         .then((res) => {
           setDepartments(res.data)
         }
@@ -84,7 +84,7 @@ const Form = () => {
     }
 
     try {
-      axios.get('http://localhost:5002/getprogram')
+      axios.get('http://graduate-programs.helwan.edu.eg/law/getprogram')
         .then((res) => {
           setPrograms(res.data)
         }
@@ -134,7 +134,7 @@ const Form = () => {
           if (page === 1) {
             if (true) {
               try {
-                axios.post('http://localhost:5002/checkpages/checkpage1', userData)
+                axios.post('http://graduate-programs.helwan.edu.eg/law/checkpages/checkpage1', userData)
                   .then((res) => {
                     setFlag(true);
                     setPage(2)
@@ -222,7 +222,7 @@ const Form = () => {
     formData.append('image4', images.image4)
     
     try {
-      axios.post('http://localhost:5002/newapp/signup', formData,
+      axios.post('http://graduate-programs.helwan.edu.eg/law/newapp/signup', formData,
         {
           onUploadProgress: (progressEvent) => {
             const { loaded, total } = progressEvent;

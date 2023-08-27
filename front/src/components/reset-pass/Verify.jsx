@@ -31,7 +31,7 @@ const Verify = () => {
     const handleLogin = (e) => {
         e.preventDefault()
         try {
-            axios.post('http://localhost:5002/verify', loginData, { withCredentials: true })
+            axios.post('http://graduate-programs.helwan.edu.eg/law/verify', loginData, { withCredentials: true })
                 .then((res) => {
                     setError('')
                     console.log(res.data.verify)

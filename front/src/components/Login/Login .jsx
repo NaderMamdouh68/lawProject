@@ -31,7 +31,7 @@ const Login = () => {
     const handleLogin = (e) => {
         e.preventDefault()
         try {
-            axios.post('http://localhost:5002/login', loginData, { withCredentials: true })
+            axios.post('http://graduate-programs.helwan.edu.eg/law/login', loginData, { withCredentials: true })
                 .then((res) => {
                     navigate('/profile')
                 }).catch((error) => {

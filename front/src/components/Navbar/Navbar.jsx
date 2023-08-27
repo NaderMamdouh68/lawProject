@@ -26,7 +26,7 @@ const Navbar = ({ User }) => {
   const logout = () => {
     try {
       axios.defaults.withCredentials = true
-      axios.get('http://localhost:5002/logout', { withCredentials: true })
+      axios.get('http://graduate-programs.helwan.edu.eg/law/logout', { withCredentials: true })
         .then((res) => {
           navigate('/login')
         }).catch((error) => {

@@ -78,7 +78,7 @@ app.get('*',async (req,res) => {
     })
 
 dotenv.config({ path: './.env' });
-const PORT = process.env.PORT || 5002;
+const PORT = process.env.PORT || 5001;
 
 
 app.listen(PORT, () => {

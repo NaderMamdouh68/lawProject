@@ -23,7 +23,7 @@ const RestPassManager = () => {
     const handleLogin = (e) => {
         e.preventDefault()
         try {
-            axios.put('http://localhost:5002/managerlog/resetpassword', loginData, { withCredentials: true })
+            axios.put('http://graduate-programs.helwan.edu.eg/law/managerlog/resetpassword', loginData, { withCredentials: true })
                 .then((res) => {
                     navigate('/manager')
                 }).catch((error) => {

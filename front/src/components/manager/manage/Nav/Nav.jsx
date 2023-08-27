@@ -9,7 +9,7 @@ const Nav = () => {
   const navigate = useNavigate();
 
   const logout = () => {
-    axios.get('http://localhost:5002/logout', { withCredentials: true })
+    axios.get('http://graduate-programs.helwan.edu.eg/law/logout', { withCredentials: true })
       .then((res) => {
         navigate('/managerLogin')
       }).catch((error) => {
@@ -21,7 +21,7 @@ const Nav = () => {
   // const [user, setUser] = React.useState({})
   // axios.defaults.withCredentials = true
   // useEffect(() => {
-  //   axios.get('http://localhost:5002/student/studentdetails', { withCredentials: true })
+  //   axios.get('http://graduate-programs.helwan.edu.eg/law/student/studentdetails', { withCredentials: true })
   //     .then((res) => {
   //       console.log(res.data)
   //       setUser(res.data)

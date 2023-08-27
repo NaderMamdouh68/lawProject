@@ -13,7 +13,7 @@ const SuperAdminStudentList = () => {
   useEffect(() => {
     try {
       axios.defaults.withCredentials = true
-      axios.get('http://localhost:5002/superadmin/allaaplication', { withCredentials: true })
+      axios.get('http://graduate-programs.helwan.edu.eg/law/superadmin/allaaplication', { withCredentials: true })
         .then((res) => {
           setStudent(res.data)
           setFilter(res.data)

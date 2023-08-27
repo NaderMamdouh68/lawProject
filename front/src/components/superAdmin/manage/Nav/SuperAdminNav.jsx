@@ -9,7 +9,7 @@ const SuperAdminNav = () => {
   const navigate = useNavigate();
 
   const logout = () => {
-    axios.get('http://localhost:5002/logout', { withCredentials: true })
+    axios.get('http://graduate-programs.helwan.edu.eg/law/logout', { withCredentials: true })
       .then((res) => {
         navigate('/superadminLogin')
       }).catch((error) => {
