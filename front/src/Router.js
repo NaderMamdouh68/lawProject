@@ -32,7 +32,7 @@ import Reset from "./components/reset-pass/Reset.jsx";
 
 const Router = createBrowserRouter([
   {
-    path: "/",
+    path: "/law/",
     element: <App />,
     children: [
       {
@@ -40,32 +40,32 @@ const Router = createBrowserRouter([
         element: <Content />
       },
       {
-        path: "/form",
+        path: "/law/form",
         element: <Form />,
         
       },
       {
-        path: "/login",
+        path: "/law/login",
         element: <Login />,
         
       },
       {
-        path: "/Verify",
+        path: "/law/Verify",
         element: <Verify />,
         
       },
       {
-        path: "/reset/:id",
+        path: "/law/reset/:id",
         element: <Reset />,
         
       },
       {
-        path: "/login",
+        path: "/law/login",
         element: <Login />,
         
       },
       {
-        path: "/profile",
+        path: "/law/profile",
         element: <Profile />,
         children:[
           {
@@ -73,35 +73,35 @@ const Router = createBrowserRouter([
               element:<ProfileStatus/>
           },
           {
-            path:"/profile/contact",
+            path: "/law/profile/contact",
             element:<Contact/>
           },
           {
-            path:"/profile/Edit",
+            path: "/law/profile/Edit",
               element:<EditProfile/>
           }
         ]
       },
       {
-        path: "/managerLogin",
+        path: "/law/managerLogin",
         element: <ManagerLogin/>,
       },
       {
-        path: "/managerLogin/restpass",
+        path: "/law/managerLogin/restpass",
         element: <RestPassManager/>,
       },
       
       
       {
-        path: "/superadminLogin",
+        path: "/law/superadminLogin",
         element: <SuperAdminLogin/>,
       },
       {
-        path: "/restpass",
+        path: "/law/restpass",
         element: <Restpass/>,
       },
       {
-        path: "/manager",
+        path: "/law/manager",
         element: <Manager/>,
         children:[
           {
@@ -109,21 +109,21 @@ const Router = createBrowserRouter([
               element:<StudentList/>
           },
           {
-            path:"/manager/programsAndDepartments",
+            path: "/law/manager/programsAndDepartments",
             element:<ProgramAndDepartment/>
           },
           {
-            path:"/manager/StudentStatastics",
+            path: "/law/manager/StudentStatastics",
             element:<StudentStat/>
           },
           {
-            path:"/manager/show/:id",
+            path: "/law/manager/show/:id",
             element:<Show/>
           },
         ]
       },
       {
-        path: "SuperAdmin",
+        path: "/law/SuperAdmin",
         element: <SuperAdmin/>,
         children:[
           {
@@ -131,11 +131,11 @@ const Router = createBrowserRouter([
               element:<SuperAdminStudentList/>
           },
           {
-              path:"/SuperAdmin/show/:id",
+              path: "/law/SuperAdmin/show/:id",
               element:<SuperAdminShow/>
           },
           {
-              path:"/SuperAdmin/add",
+              path: "/law/SuperAdmin/add",
               element:<Addm1m2f/>
           },
           
