@@ -22,7 +22,7 @@ const StudentStat = () => {
           
         }).catch((error) => {
           console.log(error.response)
-          navigate('/managerLogin')
+          navigate('/law/managerLogin')
         })
     } catch (error) {
       console.log(error)
@@ -36,7 +36,7 @@ const StudentStat = () => {
           
         }).catch((error) => {
           console.log(error.response)
-          navigate('/managerLogin')
+          navigate('/law/managerLogin')
         })
     } catch (error) {
       console.log(error)

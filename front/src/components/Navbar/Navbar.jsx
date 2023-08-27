@@ -28,7 +28,7 @@ const Navbar = ({ User }) => {
       axios.defaults.withCredentials = true
       axios.get('http://graduate-programs.helwan.edu.eg/law/logout', { withCredentials: true })
         .then((res) => {
-          navigate('/login')
+          navigate('/law/login')
         }).catch((error) => {
           console.log(error)
         })
@@ -48,18 +48,18 @@ const Navbar = ({ User }) => {
       </div>
       <ul>
         <li>
-          <Link to='/profile/contact' >{t('contact')}</Link>
+          <Link to='/law/profile/contact' >{t('contact')}</Link>
         </li>
         <li>
           {User.status === 3 ? (
-            <Link to='/profile/edit'>{t('edit')}</Link>
+            <Link to='/law/profile/edit'>{t('edit')}</Link>
           ) : (
             <span style={{ color: "gray", fontWeight: "600", fontSize: "17px", cursor: "not-allowed" }}>{t('edit')}</span>
 
           )}
         </li>
         <li>
-          <Link to='/profile' >  {t('app-status')}</Link>
+          <Link to='/law/profile' >  {t('app-status')}</Link>
         </li>
       </ul>
     </nav>

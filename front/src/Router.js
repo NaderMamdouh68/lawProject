@@ -36,7 +36,7 @@ const Router = createBrowserRouter([
     element: <App />,
     children: [
       {
-        path: "",
+        path: "/law/",
         element: <Content />
       },
       {

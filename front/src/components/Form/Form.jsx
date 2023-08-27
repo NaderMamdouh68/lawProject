@@ -173,7 +173,7 @@ const Form = () => {
           setPage((currPage) => currPage - 1)
         } else {
           setPage(0)
-          navigate('/')
+          navigate('/law/')
 
         }
         break;
@@ -236,7 +236,7 @@ const Form = () => {
       )
         .then((res) => {
 
-          navigate('/')
+          navigate('/law')
 
         }).catch((error) => {
           setError2(error.response.data.errors.msg)

@@ -22,7 +22,7 @@ const StudentList = () => {
           
         }).catch((error) => {
           console.log(error.response)
-          navigate('/managerLogin')
+          navigate('/law/managerLogin')
         })
     } catch (error) {
       console.log(error)
@@ -36,7 +36,7 @@ const StudentList = () => {
           
         }).catch((error) => {
           console.log(error.response)
-          navigate('/managerLogin')
+          navigate('/law/managerLogin')
         })
     } catch (error) {
       console.log(error)
@@ -140,7 +140,7 @@ const StudentList = () => {
                   <td>{item.submission_date.slice(0, 10)}</td>
                   <td>
                     <button className='moreinfo'>
-                      <Link to={`/manager/show/${item.student_id}`} style={{ textDecoration: "none" }}>
+                      <Link to={`/law/manager/show/${item.student_id}`} style={{ textDecoration: "none" }}>
                         مزيد من التفاصيل
                       </Link>
                     </button>

@@ -11,7 +11,7 @@ const Nav = () => {
   const logout = () => {
     axios.get('http://graduate-programs.helwan.edu.eg/law/logout', { withCredentials: true })
       .then((res) => {
-        navigate('/managerLogin')
+        navigate('/law/managerLogin')
       }).catch((error) => {
         console.log(error.response)
       })
@@ -48,7 +48,7 @@ const Nav = () => {
           <Link to='/manager/StudentStatastics' > الاحصائيات </Link>
         </li> */}
         <li>
-          <Link to='/manager' > عرض جميع الطلاب</Link>
+          <Link to='/law/manager' > عرض جميع الطلاب</Link>
         </li>
 
       </ul>

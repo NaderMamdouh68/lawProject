@@ -20,7 +20,7 @@ const Profile = () => {
           setUser(res.data);
         })
         .catch((error) => {
-          navigate('/login');
+          navigate('/law/login');
         });
     } catch (error) {
     }

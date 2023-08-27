@@ -42,7 +42,7 @@ const EditProfile = () => {
         setData(res.data)
       }).catch((error) => {
         if (error.response.data.user === false) {
-          navigate('/login')
+          navigate('/law/login')
         }
       })
 
@@ -137,7 +137,7 @@ const EditProfile = () => {
         })
           .then((res) => {
             alert('data updated')
-            navigate('/profile')
+            navigate('/law/profile')
             window.location.reload()
           }).catch((error) => {
             console.log(error.response.data.errors.msg[0])

@@ -33,7 +33,7 @@ const Login = () => {
         try {
             axios.post('http://graduate-programs.helwan.edu.eg/law/login', loginData, { withCredentials: true })
                 .then((res) => {
-                    navigate('/profile')
+                    navigate('/law/profile')
                 }).catch((error) => {
                     setError(error.response.data.errors[0].msg)
                 })
@@ -84,7 +84,7 @@ const Login = () => {
                             </div>
                             <div className="actions">
                                 <button onClick={handleLogin}> {t('login')}</button>
-                                <a href='/form' style={{ color: "#003C70", marginTop: "1rem" }}>{t('new-app-question')}  </a>
+                                <a href='/law/form' style={{ color: "#003C70", marginTop: "1rem" }}>{t('new-app-question')}  </a>
                                 {/* <a href='/Verify' style={{ color: "#000", marginTop: "1rem" }}>{t('f-pass')}  </a> */}
                             </div>
                         </div>

@@ -33,8 +33,8 @@ const Content = () => {
           </div>
           {/* <h1 style={{margin :"2rem" ,color: "#003C70"}}>{t('New applicant services ')}</h1> */}
           <div className="options">
-          <Link to='/form' style={{width:"50%"}}><button style={{background:"#AD8700"}}>{t('new')}<HiUserAdd/></button></Link>
-          <Link to='/login' style={{width:"50%"}}><button style={{background:"#003C70" }}>  {t('con')} <HiUserAdd/></button> </Link>
+          <Link to='/law/form' style={{width:"50%"}}><button style={{background:"#AD8700"}}>{t('new')}<HiUserAdd/></button></Link>
+          <Link to='/law/login' style={{width:"50%"}}><button style={{background:"#003C70" }}>  {t('con')} <HiUserAdd/></button> </Link>
           </div>
           <button onClick={handleClick} className='lan-btn'>{localStorage.getItem('i18nextLng') == "en"  ? ("عربي") : ("English")}</button>
           {/* <a href='https://drive.google.com/file/d/1hAgYuX9wdiB4X7EAblqL_EDgUIevqDrB/view?usp=sharing' target='_blank'style={{fontSize:"2rem" ,color:"#003C70"}}>{t('link-1')}</a> */}

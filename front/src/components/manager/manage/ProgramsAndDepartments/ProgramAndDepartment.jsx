@@ -36,7 +36,7 @@ const ProgramAndDepartment = () => {
       }).catch((error) => {
         console.log(error.response.data.manager)
         if (error.response.data.manager === false) {
-          navigate('/managerLogin')
+          navigate('/law/managerLogin')
         }
 
       })
@@ -48,7 +48,7 @@ const ProgramAndDepartment = () => {
       ).catch((error) => {
         console.log(error.response.data.manager)
         if (error.response.data.manager === false) {
-          navigate('/managerLogin')
+          navigate('/law/managerLogin')
         }
       }
       )

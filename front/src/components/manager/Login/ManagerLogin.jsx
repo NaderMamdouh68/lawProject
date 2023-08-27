@@ -24,17 +24,17 @@ const ManagerLogin = () => {
             axios.post('http://graduate-programs.helwan.edu.eg/law/managerlog/login', loginData, { withCredentials: true })
                 .then((res) => {
                     if(res.data.first == true && res.data.manager == true){
-                        navigate('/managerLogin/restpass')
+                        navigate('/law/managerLogin/restpass')
                     }else if(res.data.first == true && res.data.manager == false){
-                        navigate('/managerLogin')
+                        navigate('/law/managerLogin')
                     }else if(res.data.first == false && res.data.manager == true){
-                        navigate('/manager')
+                        navigate('/law/manager')
                     }else if(res.data.first == false && res.data.manager == false){
-                        navigate('/managerLogin')
+                        navigate('/law/managerLogin')
                     }
                 }).catch((error) => {
                     alert('يجب ان تكون مديرا لتسجيل الدخول')
-                    navigate('/managerLogin')
+                    navigate('/law/managerLogin')
                 })
 
         } catch (error) {
