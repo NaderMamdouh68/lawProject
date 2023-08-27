@@ -23,7 +23,7 @@ const Restpass = () => {
     const handleLogin = (e) => {
         e.preventDefault()
         try {
-            axios.put('http://localhost:5000/superadminlog/reset', loginData, { withCredentials: true })
+            axios.put('http://localhost:5002/superadminlog/reset', loginData, { withCredentials: true })
                 .then((res) => {
                     navigate('/superadmin')
                 }).catch((error) => {

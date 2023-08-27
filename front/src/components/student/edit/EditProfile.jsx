@@ -37,7 +37,7 @@ const EditProfile = () => {
   useEffect(() => {
     axios.defaults.withCredentials = true
 
-    axios.get('http://localhost:5000/student/studentdetails', { withCredentials: true })
+    axios.get('http://localhost:5002/student/studentdetails', { withCredentials: true })
       .then((res) => {
         setData(res.data)
       }).catch((error) => {
@@ -49,7 +49,7 @@ const EditProfile = () => {
     axios.defaults.withCredentials = false
 
 
-    axios.get('http://localhost:5000/getdepartment')
+    axios.get('http://localhost:5002/getdepartment')
       .then((res) => {
         setDepartments(res.data)
       }
@@ -113,6 +113,8 @@ const EditProfile = () => {
       formData.append('school', data.school)
       formData.append('enDeg', data.enDeg)
       formData.append('enDeg2', data.enDeg2)
+      formData.append('enDegname', data.enDegname)
+      formData.append('enDegname2', data.enDegname2)
       formData.append('totalDeg', data.totalDeg)
       formData.append('dadJob', data.dadJob)
       formData.append('phoneDad', data.phoneDad)
@@ -121,8 +123,9 @@ const EditProfile = () => {
 
 
       try {
-        axios.put('http://localhost:5000/student/studentupdate', formData, { withCredentials: true,
-        
+        axios.put('http://localhost:5002/student/studentupdate', formData, {
+          withCredentials: true,
+
           onUploadProgress: (progressEvent) => {
             const { loaded, total } = progressEvent;
             let percent = Math.floor((loaded * 100) / total);
@@ -131,7 +134,7 @@ const EditProfile = () => {
               setLoading(percent);
             }
           }
-         })
+        })
           .then((res) => {
             alert('data updated')
             navigate('/profile')
@@ -171,7 +174,7 @@ const EditProfile = () => {
         </div>
         <div className="data-container">
           <div className='image-con'>
-            <img src={`http://localhost:5000/${data.national_id}/${data.img}`} alt="" className="image" />
+            <img src={`http://localhost:5002/${data.national_id}/${data.img}`} alt="" className="image" />
             <button
               onClick={() => { changeimage('image1', 'image11') }}
               style={{ background: "#003C70" }} class="atch-btn">{t('change')}
@@ -267,11 +270,29 @@ const EditProfile = () => {
               </td>
             </tr>
             <tr>
+              <td>{t('enDegname')}</td>
+              <td>
+                <input type="text"
+                  value={data.enDegname}
+                  onChange={(e) => { setData({ ...data, enDegname: e.target.value }) }}
+                />
+              </td>
+            </tr>
+            <tr>
               <td>{t('enDeg')}</td>
               <td>
                 <input type="text"
                   value={data.enDeg}
                   onChange={(e) => { setData({ ...data, enDeg: e.target.value }) }}
+                />
+              </td>
+            </tr>
+            <tr>
+              <td>{t('enDegname2')}</td>
+              <td>
+                <input type="text"
+                  value={data.enDegname2}
+                  onChange={(e) => { setData({ ...data, enDegname2: e.target.value }) }}
                 />
               </td>
             </tr>
@@ -347,7 +368,7 @@ const EditProfile = () => {
               </td>
             </tr>
 
-            
+
             <tr>
               <td>{t('department')}</td>
               <td>
@@ -366,16 +387,16 @@ const EditProfile = () => {
                 </select>
               </td>
             </tr>
-            
-            
-            
+
+
+
             <tr>
               <td>{t('dateOfsubmition')}</td>
               <td>
                 {(data.submission_date?.split('T')[0]) || ''}
               </td>
             </tr>
-            
+
           </table>
         </div>
 
@@ -393,11 +414,11 @@ const EditProfile = () => {
               <td>{t('img-profile-2')}</td>
               <td className='att-row'>
                 <button
-                  onClick={() => { openImage(`http://localhost:5000/${data.national_id}/${data.photo_national_id}`) }}
+                  onClick={() => { openImage(`http://localhost:5002/${data.national_id}/${data.photo_national_id}`) }}
                   style={{ background: "#003C70" }} class="atch-btn">{t('open')}
                 </button>
                 <button
-                  onClick={() => { downloadImage(`http://localhost:5000/${data.national_id}/${data.photo_national_id}`) }}
+                  onClick={() => { downloadImage(`http://localhost:5002/${data.national_id}/${data.photo_national_id}`) }}
                   style={{ background: "#AD8700" }} class="atch-btn">{t('download')}
                 </button>
                 <button
@@ -417,11 +438,11 @@ const EditProfile = () => {
               <td>{t('img-profile-3')}</td>
               <td className='att-row'>
                 <button
-                  onClick={() => { openImage(`http://localhost:5000/${data.national_id}/${data.birth_certificate}`) }}
+                  onClick={() => { openImage(`http://localhost:5002/${data.national_id}/${data.birth_certificate}`) }}
                   style={{ background: "#003C70" }} class="atch-btn">{t('open')}
                 </button>
                 <button
-                  onClick={() => { downloadImage(`http://localhost:5000/${data.national_id}/${data.birth_certificate}`) }}
+                  onClick={() => { downloadImage(`http://localhost:5002/${data.national_id}/${data.birth_certificate}`) }}
                   style={{ background: "#AD8700" }} class="atch-btn">{t('download')}
                 </button>
                 <button
@@ -439,11 +460,11 @@ const EditProfile = () => {
               <td>{t('img-profile-4')}</td>
               <td className='att-row'>
                 <button
-                  onClick={() => { openImage(`http://localhost:5000/${data.national_id}/${data.academic_qualification}`) }}
+                  onClick={() => { openImage(`http://localhost:5002/${data.national_id}/${data.academic_qualification}`) }}
                   style={{ background: "#003C70" }} class="atch-btn">{t('open')}
                 </button>
                 <button
-                  onClick={() => { downloadImage(`http://localhost:5000/${data.national_id}/${data.academic_qualification}`) }}
+                  onClick={() => { downloadImage(`http://localhost:5002/${data.national_id}/${data.academic_qualification}`) }}
                   style={{ background: "#AD8700" }} class="atch-btn">{t('download')}
                 </button>
                 <button
@@ -461,22 +482,22 @@ const EditProfile = () => {
         <h1>{error}</h1>
 
         {loading == null ? null :
-      <div className='top' style={{marginTop:"2rem" ,width:"90%",color: "#AD8700" ,fontWeight: "bolder" ,fontSize:"1.3em"}}>      
-      <div className="progress-bar"
-        role='progressbar'
-        aria-valuenow={loading}
-        aria-valuemin='0'
-        aria-valuemax='100'
-        style={{ width: `${loading}%` }}
-      >
-        {loading}%
-      </div>
-      </div>
-    }
-      { Error ? (
-      <div className='top' style={{marginTop:"2rem" ,color: "red" ,fontWeight: "bolder"}}><h1>  {Error[0] != undefined ? `${Error[0]}` : null}  </h1> </div>) 
-      : null
-      }
+          <div className='top' style={{ marginTop: "2rem", width: "90%", color: "#AD8700", fontWeight: "bolder", fontSize: "1.3em" }}>
+            <div className="progress-bar"
+              role='progressbar'
+              aria-valuenow={loading}
+              aria-valuemin='0'
+              aria-valuemax='100'
+              style={{ width: `${loading}%` }}
+            >
+              {loading}%
+            </div>
+          </div>
+        }
+        {Error ? (
+          <div className='top' style={{ marginTop: "2rem", color: "red", fontWeight: "bolder" }}><h1>  {Error[0] != undefined ? `${Error[0]}` : null}  </h1> </div>)
+          : null
+        }
         <button
           disabled={disabled}
           onClick={confirmData}

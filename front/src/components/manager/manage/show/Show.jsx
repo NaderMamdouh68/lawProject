@@ -29,7 +29,7 @@ const Show = () => {
   useEffect(() => {
     localStorage.setItem('i18nextLng', 'ar')
 
-    axios.get('http://localhost:5000/student/studentdetails/' + id, { withCredentials: true })
+    axios.get('http://localhost:5002/student/studentdetails/' + id, { withCredentials: true })
       .then((res) => {
         setUser(res.data)
         // console.log(res.data)
@@ -75,7 +75,7 @@ const Show = () => {
     try {
       if (msg !== "") {
       if (window.confirm("هل انت متاكد من قبول الطالب")) {
-      axios.put('http://localhost:5000/manager/updatestatus/' + id, { status: 1 , comment: msg}, { withCredentials: true })
+      axios.put('http://localhost:5002/manager/updatestatus/' + id, { status: 1 , comment: msg}, { withCredentials: true })
         .then((res) => {
           window.location.reload()
         }).catch((error) => {
@@ -94,7 +94,7 @@ const Show = () => {
     if (editRes !== "") {
       if(window.confirm("هل انت متاكد من طلب تعديل البيانات")){
       try {
-        axios.put('http://localhost:5000/manager/updatestatus/' + id, { status: "3", comment: editRes }, { withCredentials: true })
+        axios.put('http://localhost:5002/manager/updatestatus/' + id, { status: "3", comment: editRes }, { withCredentials: true })
           .then((res) => {
             window.location.reload()
           }).catch((error) => {
@@ -127,7 +127,7 @@ const Show = () => {
         </div>
         <div className="data-container" ref={pdfRef}>
           <div className='image-con'>
-            <img src={`http://localhost:5000/${user.national_id}/${user.img}`} alt="img" className='imagee' />
+            <img src={`http://localhost:5002/${user.national_id}/${user.img}`} alt="img" className='imagee' />
             {user.status == 1 ? (
                 <>
                   <p style={{ background: "rgb(35, 175, 110)" }}> تم ارسال معاد المقابله</p>
@@ -228,9 +228,21 @@ const Show = () => {
               </td>
             </tr>
             <tr>
+              <td>{t('enDegname')}</td>
+              <td>
+               {user.enDegname}
+              </td>
+            </tr>
+            <tr>
               <td>{t('enDeg')}</td>
               <td>
                {user.enDeg}
+              </td>
+            </tr>
+            <tr>
+              <td>{t('enDegname2')}</td>
+              <td>
+                {user.enDegname2}
               </td>
             </tr>
             <tr>
@@ -273,7 +285,7 @@ const Show = () => {
             <tr>
               <td>{t('gender')}</td>
               <td>
-                {user.gender}
+                {user.gender == 1 ? "ذكر" : "انثي"}
               </td>
             </tr>
 
@@ -313,11 +325,11 @@ const Show = () => {
               <td>صورة البطاقه الشخصيه</td>
               <td className='att-row'>
                 <button
-                  onClick={() => { openImage(`http://localhost:5000/${user.national_id}/${user.photo_national_id}`) }}
+                  onClick={() => { openImage(`http://localhost:5002/${user.national_id}/${user.photo_national_id}`) }}
                   style={{ background: "#003C70" }} class="atch-btn">Open
                 </button>
                 <button
-                  onClick={() => { downloadImage(`http://localhost:5000/${user.national_id}/${user.photo_national_id}`) }}
+                  onClick={() => { downloadImage(`http://localhost:5002/${user.national_id}/${user.photo_national_id}`) }}
                   style={{ background: "#AD8700" }} class="atch-btn">Download
                 </button>
 
@@ -331,11 +343,11 @@ const Show = () => {
               <td>صورة شهاده الميلاد</td>
               <td className='att-row'>
                 <button
-                  onClick={() => { openImage(`http://localhost:5000/${user.national_id}/${user.birth_certificate}`) }}
+                  onClick={() => { openImage(`http://localhost:5002/${user.national_id}/${user.birth_certificate}`) }}
                   style={{ background: "#003C70" }} class="atch-btn">Open
                 </button>
                 <button
-                  onClick={() => { downloadImage(`http://localhost:5000/${user.national_id}/${user.birth_certificate}`) }}
+                  onClick={() => { downloadImage(`http://localhost:5002/${user.national_id}/${user.birth_certificate}`) }}
                   style={{ background: "#AD8700" }} class="atch-btn">Download
                 </button>
 
@@ -350,11 +362,11 @@ const Show = () => {
               <td>صورة شهاده الثانويه العامه</td>
               <td className='att-row'>
                 <button
-                  onClick={() => { openImage(`http://localhost:5000/${user.national_id}/${user.academic_qualification}`) }}
+                  onClick={() => { openImage(`http://localhost:5002/${user.national_id}/${user.academic_qualification}`) }}
                   style={{ background: "#003C70" }} class="atch-btn">Open
                 </button>
                 <button
-                  onClick={() => { downloadImage(`http://localhost:5000/${user.national_id}/${user.academic_qualification}`) }}
+                  onClick={() => { downloadImage(`http://localhost:5002/${user.national_id}/${user.academic_qualification}`) }}
                   style={{ background: "#AD8700" }} class="atch-btn">Download
                 </button>
 

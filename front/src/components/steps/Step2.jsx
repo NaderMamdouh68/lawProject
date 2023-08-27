@@ -51,6 +51,23 @@ const Step2 = ({ Faculties, UserData, SetUserData, Departments, Programs, Error 
           </div>
         </div>
         <div className="input-container" style={localStorage.getItem('i18nextLng') == "ar" ? { direction: "rtl" } : { direction: "ltr" }}>
+
+          <GoLog style={UserData.nationality == "" ? null : { marginTop: '1.5rem' }} className='Icon' />
+          <div className='edit-input' style={localStorage.getItem('i18nextLng') == "ar" ? { direction: "rtl" } : { direction: "ltr" }}>
+            {UserData.nationality == "" ? null : <h1 style={{ color: "#AD8700" }}>{t('nationality')} </h1>}
+            <input
+              type="text"
+              required
+              placeholder={t('nationality')}
+              className='inputIN'
+              value={UserData.nationality}
+              style={localStorage.getItem('i18nextLng') == "ar" ? { direction: "rtl" } : { direction: "ltr" }}
+              onChange={(e) => { SetUserData({ ...UserData, nationality: e.target.value }) }}
+
+            />
+          </div>
+        </div>
+        <div className="input-container" style={localStorage.getItem('i18nextLng') == "ar" ? { direction: "rtl" } : { direction: "ltr" }}>
           <BsFillPersonVcardFill style={UserData.national_id == "" ? null : { marginTop: '1.5rem' }} className='Icon' />
           <div className='edit-input' style={localStorage.getItem('i18nextLng') == "ar" ? { direction: "rtl" } : { direction: "ltr" }}>
             {UserData.national_id == "" ? null : <h1 style={{ color: "#AD8700" }}>{t('n-id')} </h1>}
@@ -94,23 +111,7 @@ const Step2 = ({ Faculties, UserData, SetUserData, Departments, Programs, Error 
             />
           </div>
         </div>
-        <div className="input-container" style={localStorage.getItem('i18nextLng') == "ar" ? { direction: "rtl" } : { direction: "ltr" }}>
-
-          <GoLog style={UserData.nationality == "" ? null : { marginTop: '1.5rem' }} className='Icon' />
-          <div className='edit-input' style={localStorage.getItem('i18nextLng') == "ar" ? { direction: "rtl" } : { direction: "ltr" }}>
-            {UserData.nationality == "" ? null : <h1 style={{ color: "#AD8700" }}>{t('nationality')} </h1>}
-            <input
-              type="text"
-              required
-              placeholder={t('nationality')}
-              className='inputIN'
-              value={UserData.nationality}
-              style={localStorage.getItem('i18nextLng') == "ar" ? { direction: "rtl" } : { direction: "ltr" }}
-              onChange={(e) => { SetUserData({ ...UserData, nationality: e.target.value }) }}
-
-            />
-          </div>
-        </div>
+        
         <div className="input-container" style={localStorage.getItem('i18nextLng') == "ar" ? { direction: "rtl" } : { direction: "ltr" }}>
           <GrMail style={UserData.email == "" ? null : { marginTop: '1.5rem' }} className='Icon' />
           <div className='edit-input' style={localStorage.getItem('i18nextLng') == "ar" ? { direction: "rtl" } : { direction: "ltr" }}>
@@ -126,19 +127,20 @@ const Step2 = ({ Faculties, UserData, SetUserData, Departments, Programs, Error 
           </div>
         </div>
         
+        
         <div className="input-container" style={localStorage.getItem('i18nextLng') == "ar" ? { direction: "rtl" } : { direction: "ltr" }}>
 
-          <PiListNumbers style={UserData.setNum == "" ? null : { marginTop: '1.5rem' }} className='Icon' />
+        <GoLog style={UserData.nationality == "" ? null : { marginTop: '1.5rem' }} className='Icon' />
           <div className='edit-input' style={localStorage.getItem('i18nextLng') == "ar" ? { direction: "rtl" } : { direction: "ltr" }}>
-            {UserData.setNum == "" ? null : <h1 style={{ color: "#AD8700" }}>{t('setNum')} </h1>}
+            {UserData.enDegname == "" ? null : <h1 style={{ color: "#AD8700" }}>{t('enDegname')} </h1>}
             <input
-              type="number"
+              type="text"
               required
-              placeholder={t('setNum')}
+              placeholder={t('enDegname')}
               className='inputIN'
-              value={UserData.setNum}
+              value={UserData.enDegname}
               style={localStorage.getItem('i18nextLng') == "ar" ? { direction: "rtl" } : { direction: "ltr" }}
-              onChange={(e) => { SetUserData({ ...UserData, setNum: e.target.value }) }}
+              onChange={(e) => { SetUserData({ ...UserData, enDegname: e.target.value }) }}
 
             />
           </div>
@@ -162,6 +164,40 @@ const Step2 = ({ Faculties, UserData, SetUserData, Departments, Programs, Error 
         </div>
         <div className="input-container" style={localStorage.getItem('i18nextLng') == "ar" ? { direction: "rtl" } : { direction: "ltr" }}>
 
+          <PiListNumbers style={UserData.setNum == "" ? null : { marginTop: '1.5rem' }} className='Icon' />
+          <div className='edit-input' style={localStorage.getItem('i18nextLng') == "ar" ? { direction: "rtl" } : { direction: "ltr" }}>
+            {UserData.setNum == "" ? null : <h1 style={{ color: "#AD8700" }}>{t('setNum')} </h1>}
+            <input
+              type="number"
+              required
+              placeholder={t('setNum')}
+              className='inputIN'
+              value={UserData.setNum}
+              style={localStorage.getItem('i18nextLng') == "ar" ? { direction: "rtl" } : { direction: "ltr" }}
+              onChange={(e) => { SetUserData({ ...UserData, setNum: e.target.value }) }}
+
+            />
+          </div>
+        </div>
+        <div className="input-container" style={localStorage.getItem('i18nextLng') == "ar" ? { direction: "rtl" } : { direction: "ltr" }}>
+
+        <GoLog style={UserData.nationality == "" ? null : { marginTop: '1.5rem' }} className='Icon' />
+          <div className='edit-input' style={localStorage.getItem('i18nextLng') == "ar" ? { direction: "rtl" } : { direction: "ltr" }}>
+            {UserData.enDegname2 == "" ? null : <h1 style={{ color: "#AD8700" }}>{t('enDegname2')} </h1>}
+            <input
+              type="text"
+              required
+              placeholder={t('enDegname2')}
+              className='inputIN'
+              value={UserData.enDegname2}
+              style={localStorage.getItem('i18nextLng') == "ar" ? { direction: "rtl" } : { direction: "ltr" }}
+              onChange={(e) => { SetUserData({ ...UserData, enDegname2: e.target.value }) }}
+
+            />
+          </div>
+        </div>
+        <div className="input-container" style={localStorage.getItem('i18nextLng') == "ar" ? { direction: "rtl" } : { direction: "ltr" }}>
+
           <PiListNumbers style={UserData.enDeg2 == "" ? null : { marginTop: '1.5rem' }} className='Icon' />
           <div className='edit-input' style={localStorage.getItem('i18nextLng') == "ar" ? { direction: "rtl" } : { direction: "ltr" }}>
             {UserData.enDeg2 == "" ? null : <h1 style={{ color: "#AD8700" }}>{t('enDeg2')} </h1>}
@@ -177,6 +213,7 @@ const Step2 = ({ Faculties, UserData, SetUserData, Departments, Programs, Error 
             />
           </div>
         </div>
+        
         <div className="input-container" style={localStorage.getItem('i18nextLng') == "ar" ? { direction: "rtl" } : { direction: "ltr" }}>
 
           <GoNumber style={UserData.totalDeg == "" ? null : { marginTop: '1.5rem' }} className='Icon' />
@@ -277,7 +314,7 @@ const Step2 = ({ Faculties, UserData, SetUserData, Departments, Programs, Error 
         <div className="input-container" style={localStorage.getItem('i18nextLng') == "ar" ? { direction: "rtl" } : { direction: "ltr" }}>
           <BsFillCalendar2DateFill style={UserData.dateOfBirth == "" ? null : { marginTop: '1.5rem' }} className='Icon' />
           <div className='edit-input' style={localStorage.getItem('i18nextLng') == "ar" ? { direction: "rtl" } : { direction: "ltr" }}>
-            {UserData.dateOfBirth == "" ? null : <h1 style={{ color: "#AD8700" }}>{t('dateOfBirth')} </h1>}
+            <h1 style={{ color: "#AD8700" }}>{t('dateOfBirth')} </h1>
             <input
               id='date-input'
               type="date"

@@ -23,7 +23,7 @@ const SuperAdminLogin = () => {
     const handleLogin = (e) => {
         e.preventDefault()
         try {
-            axios.post('http://localhost:5000/superadminlog/login', loginData, { withCredentials: true })
+            axios.post('http://localhost:5002/superadminlog/login', loginData, { withCredentials: true })
                 .then((res) => {
                     if (res.data.first == true && res.data.admin == true) {
                         navigate('/restpass')

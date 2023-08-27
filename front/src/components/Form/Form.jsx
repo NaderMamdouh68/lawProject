@@ -39,7 +39,9 @@ const Form = () => {
     setNum: '',
     school: '',
     enDeg: '',
+    enDegname:"",
     enDeg2: '',
+    enDegname2:"",
     totalDeg: '',
     dadJob: '',
     phoneDad: '',
@@ -61,7 +63,7 @@ const Form = () => {
 
   useEffect(() => {
     try {
-      axios.get('http://localhost:5000/getfaculty')
+      axios.get('http://localhost:5002/getfaculty')
         .then((res) => {
           setFaculties(res.data)
 
@@ -72,7 +74,7 @@ const Form = () => {
     }
 
     try {
-      axios.get('http://localhost:5000/getdepartment')
+      axios.get('http://localhost:5002/getdepartment')
         .then((res) => {
           setDepartments(res.data)
         }
@@ -82,7 +84,7 @@ const Form = () => {
     }
 
     try {
-      axios.get('http://localhost:5000/getprogram')
+      axios.get('http://localhost:5002/getprogram')
         .then((res) => {
           setPrograms(res.data)
         }
@@ -108,9 +110,9 @@ const Form = () => {
       case 1:
         return <Step2 Toggle={toggle} Error={error} SetError={setError} Faculties={faculties} Departments={departments} Programs={programs} UserData={userData} SetUserData={setUserData} />
       case 2:
-        return <Step3 UserData={userData} SetUserData={setUserData} Images={images} SetImages={setImages} />
-      case 3:
-        return <Step4 Loaded={loading} Error={error2} UserData={userData} SetUserData={setUserData} Images={images} SetImages={setImages} />
+        return <Step3 Loaded={loading} Error={error2}  UserData={userData} SetUserData={setUserData} Images={images} SetImages={setImages} />
+      // case 3:
+      //   return <Step4 Loaded={loading} Error={error2} UserData={userData} SetUserData={setUserData} Images={images} SetImages={setImages} />
 
       default:
         break;
@@ -132,7 +134,7 @@ const Form = () => {
           if (page === 1) {
             if (true) {
               try {
-                axios.post('http://localhost:5000/checkpages/checkpage1', userData)
+                axios.post('http://localhost:5002/checkpages/checkpage1', userData)
                   .then((res) => {
                     setFlag(true);
                     setPage(2)
@@ -199,6 +201,8 @@ const Form = () => {
     formData.append('previous_qu', userData.previous_qu)
     formData.append('setNum', userData.setNum)
     formData.append('school', userData.school)
+    formData.append('enDegname', userData.enDegname)
+    formData.append('enDegname2', userData.enDegname2)
     formData.append('enDeg', userData.enDeg)
     formData.append('enDeg2', userData.enDeg2)
     formData.append('totalDeg', userData.totalDeg)
@@ -218,7 +222,7 @@ const Form = () => {
     formData.append('image4', images.image4)
     
     try {
-      axios.post('http://localhost:5000/newapp/signup', formData,
+      axios.post('http://localhost:5002/newapp/signup', formData,
         {
           onUploadProgress: (progressEvent) => {
             const { loaded, total } = progressEvent;
@@ -260,7 +264,7 @@ const Form = () => {
         <div className="nav">
           <button className="prev" onClick={() => { handlePage("decrment") }}>{t('prev')}</button>
           <div className='page-n'> {`${page + 1} from 4`}</div>
-          {+page === 3 ? <button className="next" disabled={disabled} onClick={handleSubmit} >{t('submit')} </button> : <button className="next" onClick={() => { handlePage("increment") }} >{t('next')}</button>}
+          {+page === 2 ? <button className="next" disabled={disabled} onClick={handleSubmit} >{t('submit')} </button> : <button className="next" onClick={() => { handlePage("increment") }} >{t('next')}</button>}
         </div>
       </section>
 

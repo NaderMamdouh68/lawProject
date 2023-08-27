@@ -12,7 +12,7 @@ const ProfileStatus = () => {
 
   axios.defaults.withCredentials = true
   useEffect(() => {
-    axios.get('http://localhost:5000/student/studentdetails', { withCredentials: true })
+    axios.get('http://localhost:5002/student/studentdetails', { withCredentials: true })
       .then((res) => {
         setUser(res.data)
       }).catch((error) => {

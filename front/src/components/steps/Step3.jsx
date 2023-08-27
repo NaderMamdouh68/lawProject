@@ -3,7 +3,7 @@ import { useTranslation } from 'react-i18next';
 import { FaRegFilePdf } from 'react-icons/fa'
 import { AiTwotoneDelete } from 'react-icons/ai'
 
-const Step3 = ({ UserData, SetUserData, Images, SetImages }) => {
+const Step3 = ({ UserData, SetUserData, Images, SetImages ,Error ,Loaded}) => {
 
 
 
@@ -169,7 +169,23 @@ const Step3 = ({ UserData, SetUserData, Images, SetImages }) => {
 
 
       <div className='top' style={{ marginTop: "2rem" }}><h1>*** {t('add-media')} *** </h1> </div>
-
+      {Loaded == null ? null :
+      <div className='top' style={{marginTop:"2rem" ,color: "#AD8700" ,fontWeight: "bolder" ,fontSize:"1.3em"}}>      
+      <div className="progress-bar"
+        role='progressbar'
+        aria-valuenow={Loaded}
+        aria-valuemin='0'
+        aria-valuemax='100'
+        style={{ width: `${Loaded}%` }}
+      >
+        {Loaded}%
+      </div>
+      </div>
+    }
+      { Error ? (
+      <div className='top' style={{marginTop:"2rem" ,color: "red" ,fontWeight: "bolder"}}><h1>  {Error[0] != undefined ? `${Error[0]}` : null}  </h1> </div>) 
+      : null
+      }
     </>
 
   )

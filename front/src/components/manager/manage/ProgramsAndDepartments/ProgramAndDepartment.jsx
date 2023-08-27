@@ -30,7 +30,7 @@ const ProgramAndDepartment = () => {
   })
   axios.defaults.withCredentials = true
   useEffect(() => {
-    axios.get('http://localhost:5000/manager/alldepartment', { withCredentials: true })
+    axios.get('http://localhost:5002/manager/alldepartment', { withCredentials: true })
       .then((res) => {
         setDepartment(res.data)
       }).catch((error) => {
@@ -41,7 +41,7 @@ const ProgramAndDepartment = () => {
 
       })
 
-    axios.get('http://localhost:5000/manager/allprogram', { withCredentials: true })
+    axios.get('http://localhost:5002/manager/allprogram', { withCredentials: true })
       .then((res) => {
         setProgram(res.data)
       }
@@ -58,7 +58,7 @@ const ProgramAndDepartment = () => {
     if (document.querySelector('.add-department input').value !== '') {
       let con = window.confirm('هل انت متاكد من اضافه القسم')
       if (con) {
-        axios.post('http://localhost:5000/manager/adddepartment', adddDepartment, { withCredentials: true })
+        axios.post('http://localhost:5002/manager/adddepartment', adddDepartment, { withCredentials: true })
           .then((res) => {
             window.location.reload()
           }).catch((error) => {
@@ -72,7 +72,7 @@ const ProgramAndDepartment = () => {
 
   const addpro = () => {
 
-    axios.post('http://localhost:5000/manager/addprogram', addProgram, { withCredentials: true })
+    axios.post('http://localhost:5002/manager/addprogram', addProgram, { withCredentials: true })
       .then((res) => {
         alert('تم اضافه البرنامج')
         window.location.reload()

@@ -4,6 +4,8 @@ import { GrMail } from 'react-icons/gr'
 import { RiLockPasswordFill } from 'react-icons/ri'
 import { useTranslation } from 'react-i18next';
 import { useNavigate } from 'react-router-dom';
+import { PiListNumbers } from 'react-icons/pi'
+
 
 import axios from 'axios'
 
@@ -13,8 +15,8 @@ const Login = () => {
     const [error, setError] = useState([])
 
     const [loginData, setLoginData] = useState({
-        password: '',
-        email: '',
+        national_id: '',
+        setNum: '',
     })
 
     const [t, i18n] = useTranslation();
@@ -29,7 +31,7 @@ const Login = () => {
     const handleLogin = (e) => {
         e.preventDefault()
         try {
-            axios.post('http://localhost:5000/login', loginData, { withCredentials: true })
+            axios.post('http://localhost:5002/login', loginData, { withCredentials: true })
                 .then((res) => {
                     navigate('/profile')
                 }).catch((error) => {
@@ -61,29 +63,29 @@ const Login = () => {
                         </div>
                         <div className="content" style={{ marginTop: "6rem", gap: "3rem" }}>
                             <div className="input-container" style={{ gap: "2rem", }}>
-                                <GrMail className='Icon' style={{ fontSize: "3.5rem" }} />
+                                <PiListNumbers className='Icon' style={{ fontSize: "3.5rem" }} />
                                 <input
                                     type="text"
-                                    placeholder={t('email')}
+                                    placeholder={t('setNum')}
                                     className='inputIN'
                                     style={{ cursor: "text", height: "4rem" }}
-                                    value={loginData.email} onChange={(e) => { setLoginData({ ...loginData, email: e.target.value }) }}
+                                    value={loginData.setNum} onChange={(e) => { setLoginData({ ...loginData, setNum: e.target.value }) }}
                                 />
                             </div>
                             <div className="input-container" style={{ gap: "2rem", }}>
-                                <RiLockPasswordFill className='Icon' style={{ fontSize: "3.5rem" }} />
+                                <PiListNumbers className='Icon' style={{ fontSize: "3.5rem" }} />
                                 <input
-                                    type="password"
-                                    placeholder={t('password')}
+                                    type="text"
+                                    placeholder={t('n-id')}
                                     className='inputIN'
                                     style={{ cursor: "text", height: "4rem" }}
-                                    value={loginData.password} onChange={(e) => { setLoginData({ ...loginData, password: e.target.value }) }}
+                                    value={loginData.national_id} onChange={(e) => { setLoginData({ ...loginData, national_id: e.target.value }) }}
                                 />
                             </div>
                             <div className="actions">
                                 <button onClick={handleLogin}> {t('login')}</button>
                                 <a href='/form' style={{ color: "#003C70", marginTop: "1rem" }}>{t('new-app-question')}  </a>
-                                <a href='/Verify' style={{ color: "#000", marginTop: "1rem" }}>{t('f-pass')}  </a>
+                                {/* <a href='/Verify' style={{ color: "#000", marginTop: "1rem" }}>{t('f-pass')}  </a> */}
                             </div>
                         </div>
                         <div className='top' style={{ marginTop: "2rem", color: "red", fontWeight: "bolder" }}><h1>{error}</h1></div>

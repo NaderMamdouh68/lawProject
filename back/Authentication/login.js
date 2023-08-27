@@ -19,8 +19,8 @@ const key = "secretkey";
 
 
 auth.post('/login',
-    body('email').notEmpty().withMessage('email is required'),
-    body("password").isLength({ min: 3 }).withMessage("password must be at least 3 chars long!"),
+    body('setNum').notEmpty().withMessage('setNum is required'),
+    body("national_id").isLength({ min: 3 }).withMessage("national_id must be at least 3 chars long!"),
     async (req, res) => {
         try {
             let error = [];
@@ -32,7 +32,7 @@ auth.post('/login',
 
 
 
-            const user = await query("SELECT * FROM students WHERE email = ?", [req.body.email]);
+            const user = await query("SELECT * FROM students WHERE setNum = ? AND national_id = ?", [req.body.setNum,req.body.national_id]);
             if (user.length === 0) {
                 error.push({ msg: "Student Does Not Exist" });
                 return res.status(400).json({ login: false, errors: error });
@@ -40,13 +40,7 @@ auth.post('/login',
 
 
 
-            const checkpassword = await bcrypt.compare(req.body.password, user[0].password);
 
-
-            if (!checkpassword) {
-                error.push({ msg: "Password is incorrect" });
-                return res.status(400).json({ login: false, errors: error });
-            }
 
             delete user[0].password;
 
@@ -78,7 +72,7 @@ auth.get('/logout',
 });
 
 auth.post('/verify',
-    body('email').notEmpty().withMessage('email is required').isEmail().withMessage('email is not valid'),
+    body('setNum').notEmpty().withMessage('setNumer is required'),
 
     body('national_id').notEmpty().withMessage('national_id is required'),
     async (req, res) => {
@@ -90,7 +84,7 @@ auth.post('/verify',
                 return res.status(400).json({ errors: error });
             }
 
-            const user = await query("SELECT * FROM students WHERE email = ? AND national_id = ?", [req.body.email, req.body.national_id]);
+            const user = await query("SELECT * FROM students WHERE setNum = ? AND national_id = ?", [req.body.email, req.body.national_id]);
             if (user.length === 0) {
                 error.push("Student Does Not Exist");
                 return res.status(400).json({errors: error });
