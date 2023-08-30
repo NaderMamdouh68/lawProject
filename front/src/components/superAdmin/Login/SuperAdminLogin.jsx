@@ -23,7 +23,7 @@ const SuperAdminLogin = () => {
     const handleLogin = (e) => {
         e.preventDefault()
         try {
-            axios.post('http://graduate-programs.helwan.edu.eg/law/superadminlog/login', loginData, { withCredentials: true })
+            axios.post('http://localhost:5002/superadminlog/login', loginData, { withCredentials: true })
                 .then((res) => {
                     if (res.data.first == true && res.data.admin == true) {
                         navigate('/restpass')
@@ -82,7 +82,7 @@ const SuperAdminLogin = () => {
                                     style={{ cursor: "text", height: "4rem" }}
                                     value={loginData.password} onChange={(e) => { setLoginData({ ...loginData, password: e.target.value }) }}
                                 />
-                                
+
                             </div>
                             <div className="actions">
                                 <button onClick={handleLogin}> تسجيل الدخول </button>

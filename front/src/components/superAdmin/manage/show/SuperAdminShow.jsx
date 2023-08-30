@@ -21,7 +21,7 @@ const SuperAdminShow = () => {
   const [user, setUser] = React.useState({})
   axios.defaults.withCredentials = true
   useEffect(() => {
-    axios.get('http://graduate-programs.helwan.edu.eg/law/student/studentdetailsReport/' + id, { withCredentials: true })
+    axios.get('http://localhost:5002/student/studentdetailsReport/' + id, { withCredentials: true })
       .then((res) => {
         setUser(res.data)
       }).catch((error) => {
@@ -74,7 +74,7 @@ const SuperAdminShow = () => {
         </div>
         <div className="data-container" ref={pdfRef}>
           <div className='image-con'>
-            <img src={`http://graduate-programs.helwan.edu.eg/law/${user.national_id}/${user.img}`} alt="img" className='imagee' />
+            <img src={`http://localhost:5002/${user.national_id}/${user.img}`} alt="img" className='imagee' />
             {
               user.status == 0 ? <div className='status-con'>
                 <p className='status' style={{ background: '#FF0000' }}>مرفوض من الكليه</p>
@@ -89,7 +89,7 @@ const SuperAdminShow = () => {
               </div> : <div className='status-con'>
                 <p className='status' style={{ background: '#FF0000' }}>مرفوض من الجامعه</p>
               </div>
-              
+
             }
 
 
@@ -160,12 +160,12 @@ const SuperAdminShow = () => {
               {user.level === 1 ? <td> دبلومه</td> : user.level === 2 ? <td>دبلومه عام</td> : user.level === 3 ? <td>دبلومه مهني</td> : user.level === 4 ? <td>ماجستير</td> : user.level === 5 ? <td>دكتوراه</td> : null}
             </tr>
             {+user.gender === 1 && (
-            <tr>
-              <td>الموقف من التجنيد</td>
-              <td>
-                {user.military_status == 0 ? `اعفاء نهائى` : user.military_status == 1 ? `اعفاء مؤقت` : `انهى الخدمه`}
-              </td>
-            </tr>
+              <tr>
+                <td>الموقف من التجنيد</td>
+                <td>
+                  {user.military_status == 0 ? `اعفاء نهائى` : user.military_status == 1 ? `اعفاء مؤقت` : `انهى الخدمه`}
+                </td>
+              </tr>
             )}
             <tr>
               <td>تاريخ الطلب</td>
@@ -185,152 +185,152 @@ const SuperAdminShow = () => {
             <th>Buttons</th>
           </tr>
 
-          {user.photo_national_id !== "0" &&(
-          <tr>
-            <td>صورة البطاقه الشخصيه</td>
-            <td className='att-row'>
-              <button
-                onClick={() => { openImage(`http://graduate-programs.helwan.edu.eg/law/${user.national_id}/${user.photo_national_id}`) }}
-                style={{ background: "#003C70" }} class="atch-btn">Open
-              </button>
-              <button
-                onClick={() => { downloadImage(`http://graduate-programs.helwan.edu.eg/law/${user.national_id}/${user.photo_national_id}`) }}
-                style={{ background: "#AD8700" }} class="atch-btn">Download
-              </button>
+          {user.photo_national_id !== "0" && (
+            <tr>
+              <td>صورة البطاقه الشخصيه</td>
+              <td className='att-row'>
+                <button
+                  onClick={() => { openImage(`http://localhost:5002/${user.national_id}/${user.photo_national_id}`) }}
+                  style={{ background: "#003C70" }} class="atch-btn">Open
+                </button>
+                <button
+                  onClick={() => { downloadImage(`http://localhost:5002/${user.national_id}/${user.photo_national_id}`) }}
+                  style={{ background: "#AD8700" }} class="atch-btn">Download
+                </button>
 
-            </td>
-          </tr>
-           )
+              </td>
+            </tr>
+          )
           }
 
- {user.birth_certificate !== "0" &&(
-          <tr>
-            <td>صورة شهاده الميلاد</td>
-            <td className='att-row'>
-              <button
-                onClick={() => { openImage(`http://graduate-programs.helwan.edu.eg/law/${user.national_id}/${user.birth_certificate}`) }}
-                style={{ background: "#003C70" }} class="atch-btn">Open
-              </button>
-              <button
-                onClick={() => { downloadImage(`http://graduate-programs.helwan.edu.eg/law/${user.national_id}/${user.birth_certificate}`) }}
-                style={{ background: "#AD8700" }} class="atch-btn">Download
-              </button>
+          {user.birth_certificate !== "0" && (
+            <tr>
+              <td>صورة شهاده الميلاد</td>
+              <td className='att-row'>
+                <button
+                  onClick={() => { openImage(`http://localhost:5002/${user.national_id}/${user.birth_certificate}`) }}
+                  style={{ background: "#003C70" }} class="atch-btn">Open
+                </button>
+                <button
+                  onClick={() => { downloadImage(`http://localhost:5002/${user.national_id}/${user.birth_certificate}`) }}
+                  style={{ background: "#AD8700" }} class="atch-btn">Download
+                </button>
 
 
-            </td>
-          </tr>
-           )
+              </td>
+            </tr>
+          )
           }
 
-{user.academic_qualification !== "0" &&(
-          <tr>
-            <td>صورة المؤهل</td>
-            <td className='att-row'>
-              <button
-                onClick={() => { openImage(`http://graduate-programs.helwan.edu.eg/law/${user.national_id}/${user.academic_qualification}`) }}
-                style={{ background: "#003C70" }} class="atch-btn">Open
-              </button>
-              <button
-                onClick={() => { downloadImage(`http://graduate-programs.helwan.edu.eg/law/${user.national_id}/${user.academic_qualification}`) }}
-                style={{ background: "#AD8700" }} class="atch-btn">Download
-              </button>
+          {user.academic_qualification !== "0" && (
+            <tr>
+              <td>صورة المؤهل</td>
+              <td className='att-row'>
+                <button
+                  onClick={() => { openImage(`http://localhost:5002/${user.national_id}/${user.academic_qualification}`) }}
+                  style={{ background: "#003C70" }} class="atch-btn">Open
+                </button>
+                <button
+                  onClick={() => { downloadImage(`http://localhost:5002/${user.national_id}/${user.academic_qualification}`) }}
+                  style={{ background: "#AD8700" }} class="atch-btn">Download
+                </button>
 
 
-            </td>
-          </tr>
-           )
+              </td>
+            </tr>
+          )
           }
 
-{user.grade_statement !== "0" &&(
-          <tr>
-            <td>صورة بيان الدرجات</td>
-            <td className='att-row'>
-              <button
-                onClick={() => { openImage(`http://graduate-programs.helwan.edu.eg/law/${user.national_id}/${user.grade_statement}`) }}
-                style={{ background: "#003C70" }} class="atch-btn">Open
-              </button>
-              <button
-                onClick={() => { downloadImage(`http://graduate-programs.helwan.edu.eg/law/${user.national_id}/${user.grade_statement}`) }}
-                style={{ background: "#AD8700" }} class="atch-btn">Download
-              </button>
+          {user.grade_statement !== "0" && (
+            <tr>
+              <td>صورة بيان الدرجات</td>
+              <td className='att-row'>
+                <button
+                  onClick={() => { openImage(`http://localhost:5002/${user.national_id}/${user.grade_statement}`) }}
+                  style={{ background: "#003C70" }} class="atch-btn">Open
+                </button>
+                <button
+                  onClick={() => { downloadImage(`http://localhost:5002/${user.national_id}/${user.grade_statement}`) }}
+                  style={{ background: "#AD8700" }} class="atch-btn">Download
+                </button>
 
 
-            </td>
-          </tr>
-           )
+              </td>
+            </tr>
+          )
           }
 
-{user.good_conduct_form!== "0" &&(
-          <tr>
-            <td>صورة استمارة حسن سير وسلوك</td>
-            <td className='att-row'>
-              <button
-                onClick={() => { openImage(`http://graduate-programs.helwan.edu.eg/law/${user.national_id}/${user.good_conduct_form}`) }}
-                style={{ background: "#003C70" }} class="atch-btn">Open
-              </button>
-              <button
-                onClick={() => { downloadImage(`http://graduate-programs.helwan.edu.eg/law/${user.national_id}/${user.good_conduct_form}`) }}
-                style={{ background: "#AD8700" }} class="atch-btn">Download
-              </button>
+          {user.good_conduct_form !== "0" && (
+            <tr>
+              <td>صورة استمارة حسن سير وسلوك</td>
+              <td className='att-row'>
+                <button
+                  onClick={() => { openImage(`http://localhost:5002/${user.national_id}/${user.good_conduct_form}`) }}
+                  style={{ background: "#003C70" }} class="atch-btn">Open
+                </button>
+                <button
+                  onClick={() => { downloadImage(`http://localhost:5002/${user.national_id}/${user.good_conduct_form}`) }}
+                  style={{ background: "#AD8700" }} class="atch-btn">Download
+                </button>
 
 
-            </td>
-          </tr>
-           )
+              </td>
+            </tr>
+          )
           }
 
-{user.approval_from_employer !== "0" &&(
-          <tr>
-            <td>صورة موافقة جهة العمل</td>
-            <td className='att-row'>
-              <button
-                onClick={() => { openImage(`http://graduate-programs.helwan.edu.eg/law/${user.national_id}/${user.approval_from_employer}`) }}
-                style={{ background: "#003C70" }} class="atch-btn">Open
-              </button>
-              <button
-                onClick={() => { downloadImage(`http://graduate-programs.helwan.edu.eg/law/${user.national_id}/${user.approval_from_employer}`) }}
-                style={{ background: "#AD8700" }} class="atch-btn">Download
-              </button>
+          {user.approval_from_employer !== "0" && (
+            <tr>
+              <td>صورة موافقة جهة العمل</td>
+              <td className='att-row'>
+                <button
+                  onClick={() => { openImage(`http://localhost:5002/${user.national_id}/${user.approval_from_employer}`) }}
+                  style={{ background: "#003C70" }} class="atch-btn">Open
+                </button>
+                <button
+                  onClick={() => { downloadImage(`http://localhost:5002/${user.national_id}/${user.approval_from_employer}`) }}
+                  style={{ background: "#AD8700" }} class="atch-btn">Download
+                </button>
 
 
-            </td>
-          </tr>
-           )
+              </td>
+            </tr>
+          )
           }
 
           {user.position_on_military !== "0" ?
-          <tr>
-            <td>صورة الموقف من التجنيد</td>
-            <td className='att-row'>
-              <button
-                onClick={() => { openImage(`http://graduate-programs.helwan.edu.eg/law/${user.national_id}/${user.position_on_military}`) }}
-                style={{ background: "#003C70" }} class="atch-btn">Open
-              </button>
-              <button
-                onClick={() => { downloadImage(`http://graduate-programs.helwan.edu.eg/law/${user.national_id}/${user.position_on_military}`) }}
-                style={{ background: "#AD8700" }} class="atch-btn">Download
-              </button>
-              
-            </td>
-          </tr>
-          : null}
+            <tr>
+              <td>صورة الموقف من التجنيد</td>
+              <td className='att-row'>
+                <button
+                  onClick={() => { openImage(`http://localhost:5002/${user.national_id}/${user.position_on_military}`) }}
+                  style={{ background: "#003C70" }} class="atch-btn">Open
+                </button>
+                <button
+                  onClick={() => { downloadImage(`http://localhost:5002/${user.national_id}/${user.position_on_military}`) }}
+                  style={{ background: "#AD8700" }} class="atch-btn">Download
+                </button>
 
-            {user.masters_photo!== "0" ? 
-          <tr>
-            <td>صوره الماجستير</td>
-            <td className='att-row'>
-              <button
-                onClick={() => { openImage(`http://graduate-programs.helwan.edu.eg/law/${user.national_id}/${user.masters_photo}`) }}
-                style={{ background: "#003C70" }} class="atch-btn">Open
-              </button>
-              <button
-                onClick={() => { downloadImage(`http://graduate-programs.helwan.edu.eg/law/${user.national_id}/${user.masters_photo}`) }}
-                style={{ background: "#AD8700" }} class="atch-btn">Download
-              </button>
+              </td>
+            </tr>
+            : null}
+
+          {user.masters_photo !== "0" ?
+            <tr>
+              <td>صوره الماجستير</td>
+              <td className='att-row'>
+                <button
+                  onClick={() => { openImage(`http://localhost:5002/${user.national_id}/${user.masters_photo}`) }}
+                  style={{ background: "#003C70" }} class="atch-btn">Open
+                </button>
+                <button
+                  onClick={() => { downloadImage(`http://localhost:5002/${user.national_id}/${user.masters_photo}`) }}
+                  style={{ background: "#AD8700" }} class="atch-btn">Download
+                </button>
 
 
-            </td>
-          </tr>
+              </td>
+            </tr>
             : null}
 
 

@@ -15,11 +15,11 @@ const StudentList = () => {
   useEffect(() => {
     try {
       axios.defaults.withCredentials = true
-      axios.get('http://graduate-programs.helwan.edu.eg/law/manager/allaaplication', { withCredentials: true })
+      axios.get('http://localhost:5002/manager/allaaplication', { withCredentials: true })
         .then((res) => {
           setStudent(res.data)
           setFilter(res.data)
-          
+
         }).catch((error) => {
           console.log(error.response)
           navigate('/law/managerLogin')
@@ -30,10 +30,10 @@ const StudentList = () => {
 
     try {
       axios.defaults.withCredentials = true
-      axios.get('http://graduate-programs.helwan.edu.eg/law/manager/alldepartment', { withCredentials: true })
+      axios.get('http://localhost:5002/manager/alldepartment', { withCredentials: true })
         .then((res) => {
           setDepartment(res.data)
-          
+
         }).catch((error) => {
           console.log(error.response)
           navigate('/law/managerLogin')
@@ -118,6 +118,10 @@ const StudentList = () => {
                 <th>اسم الطالب</th>
                 <th>رقم الهوية الوطنية</th>
                 <th>القسم</th>
+                <th> اللغه الاجنبيه الاولي</th>
+                <th> درجه اللغه الاجنبيه الاولي</th>
+                <th> اللغه الاجنبيه الثانيه</th>
+                <th> درجه اللغه الاجنبيه الثانيه</th>
                 <th>حالة الطلب</th>
                 <th>تاريخ التقديم</th>
                 <th>التفاصيل</th>
@@ -126,11 +130,14 @@ const StudentList = () => {
             <tbody>
               {(filter.map((item, index) => (
                 <tr key={item.student_id}>
-                  <td>{index +1}</td>
+                  <td>{index + 1}</td>
                   <td>{item.student_name}</td>
                   <td>{item.national_id}</td>
                   <td>{item.department_name_ar}</td>
-                  
+                  <td>{item.enDegname}</td>
+                    <td>{item.enDeg}</td>
+                    <td>{item.enDegname2}</td>
+                    <td>{item.enDeg2}</td>
                   <td>
                     {item.status === 0 ? 'مرفوض' :
                       item.status === 1 ? 'تم ارسال تاريج الحضور' :

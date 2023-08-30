@@ -3,6 +3,7 @@ import { useTranslation } from 'react-i18next';
 import {HiUserAdd} from 'react-icons/hi'
 import { Link } from 'react-router-dom';
 import './Content.css'
+import img from '../../images/lg.jpg'
 const Content = () => {
 
 
@@ -25,7 +26,7 @@ const Content = () => {
 
     <div className='Content'>
           
-          <img src="assets/lg.jpg" alt="" className='mini-logo' style={{width:"20%"}}/>
+          <img src={img} alt="" className='mini-logo' style={{width:"20%"}}/>
 
           <p style={{fontSize:"2.5rem" , margin :"2rem" ,textAlign: "center"}}>{t('welcome')} </p>
           <div className="icon">

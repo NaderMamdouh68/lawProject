@@ -15,11 +15,11 @@ const StudentStat = () => {
   useEffect(() => {
     try {
       axios.defaults.withCredentials = true
-      axios.get('http://graduate-programs.helwan.edu.eg/law/manager/allaaplication', { withCredentials: true })
+      axios.get('http://localhost:5002/manager/allaaplication', { withCredentials: true })
         .then((res) => {
           setStudent(res.data)
           setFilter(res.data)
-          
+
         }).catch((error) => {
           console.log(error.response)
           navigate('/law/managerLogin')
@@ -30,10 +30,10 @@ const StudentStat = () => {
 
     try {
       axios.defaults.withCredentials = true
-      axios.get('http://graduate-programs.helwan.edu.eg/law/manager/alldepartment', { withCredentials: true })
+      axios.get('http://localhost:5002/manager/alldepartment', { withCredentials: true })
         .then((res) => {
           setDepartment(res.data)
-          
+
         }).catch((error) => {
           console.log(error.response)
           navigate('/law/managerLogin')
@@ -66,7 +66,7 @@ const StudentStat = () => {
               setValue(e.target.value)
               setValue2('')
               setValue3('')
-              
+
             }}
             className='filter'
             name=""
@@ -124,9 +124,9 @@ const StudentStat = () => {
         <div className="student-container">
           <div className='stat'>
             <h1>{filter.length} طلاّب</h1>
-            <h3>{value != ''? value == 0 ? 'مرفوض' : value == 1 ? 'مقبول' : value == 2 ? 'قيد الانتظار' : value == 3 ? 'قيد التعديل' : 'الكل' : ''}</h3>
-            <h3>{value2 != ''? value2 == 1 ? 'دبلومه' : value2 == 2 ? 'دبلومه عامه' : value2 == 3 ? 'دبلومه مهني' : value2 == 4 ? 'ماجستير' : value2 == 5 ? 'دكتوراه' : 'الكل' : ''}</h3>
-            <h3>{value3 != ''? value3 : ''}</h3>
+            <h3>{value != '' ? value == 0 ? 'مرفوض' : value == 1 ? 'مقبول' : value == 2 ? 'قيد الانتظار' : value == 3 ? 'قيد التعديل' : 'الكل' : ''}</h3>
+            <h3>{value2 != '' ? value2 == 1 ? 'دبلومه' : value2 == 2 ? 'دبلومه عامه' : value2 == 3 ? 'دبلومه مهني' : value2 == 4 ? 'ماجستير' : value2 == 5 ? 'دكتوراه' : 'الكل' : ''}</h3>
+            <h3>{value3 != '' ? value3 : ''}</h3>
 
           </div>
         </div>

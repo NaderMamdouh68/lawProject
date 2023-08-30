@@ -39,9 +39,9 @@ const Form = () => {
     setNum: '',
     school: '',
     enDeg: '',
-    enDegname:"",
+    enDegname: "",
     enDeg2: '',
-    enDegname2:"",
+    enDegname2: "",
     totalDeg: '',
     dadJob: '',
     phoneDad: '',
@@ -56,14 +56,14 @@ const Form = () => {
     image2: '',
     image3: '',
     image4: '',
-    
+
   })
 
 
 
   useEffect(() => {
     try {
-      axios.get('http://graduate-programs.helwan.edu.eg/law/getfaculty')
+      axios.get('http://localhost:5002/getfaculty')
         .then((res) => {
           setFaculties(res.data)
 
@@ -74,7 +74,7 @@ const Form = () => {
     }
 
     try {
-      axios.get('http://graduate-programs.helwan.edu.eg/law/getdepartment')
+      axios.get('http://localhost:5002/getdepartment')
         .then((res) => {
           setDepartments(res.data)
         }
@@ -84,7 +84,7 @@ const Form = () => {
     }
 
     try {
-      axios.get('http://graduate-programs.helwan.edu.eg/law/getprogram')
+      axios.get('http://localhost:5002/getprogram')
         .then((res) => {
           setPrograms(res.data)
         }
@@ -110,7 +110,7 @@ const Form = () => {
       case 1:
         return <Step2 Toggle={toggle} Error={error} SetError={setError} Faculties={faculties} Departments={departments} Programs={programs} UserData={userData} SetUserData={setUserData} />
       case 2:
-        return <Step3 Loaded={loading} Error={error2}  UserData={userData} SetUserData={setUserData} Images={images} SetImages={setImages} />
+        return <Step3 Loaded={loading} Error={error2} UserData={userData} SetUserData={setUserData} Images={images} SetImages={setImages} />
       // case 3:
       //   return <Step4 Loaded={loading} Error={error2} UserData={userData} SetUserData={setUserData} Images={images} SetImages={setImages} />
 
@@ -134,7 +134,7 @@ const Form = () => {
           if (page === 1) {
             if (true) {
               try {
-                axios.post('http://graduate-programs.helwan.edu.eg/law/checkpages/checkpage1', userData)
+                axios.post('http://localhost:5002/checkpages/checkpage1', userData)
                   .then((res) => {
                     setFlag(true);
                     setPage(2)
@@ -187,9 +187,9 @@ const Form = () => {
     e.preventDefault()
     setError2([])
     setError([])
-    
+
     const formData = new FormData()
-    
+
     setDisabled(true)
     formData.append('name', userData.name)
     formData.append('email', userData.email)
@@ -214,15 +214,15 @@ const Form = () => {
     formData.append('gender', userData.gender)
     formData.append('department', userData.department)
     formData.append('length_of_file', userData.length_of_file)
-    
+
 
     formData.append('image1', images.image1)
     formData.append('image2', images.image2)
     formData.append('image3', images.image3)
     formData.append('image4', images.image4)
-    
+
     try {
-      axios.post('http://graduate-programs.helwan.edu.eg/law/newapp/signup', formData,
+      axios.post('http://localhost:5002/newapp/signup', formData,
         {
           onUploadProgress: (progressEvent) => {
             const { loaded, total } = progressEvent;

@@ -9,7 +9,7 @@ const Nav = () => {
   const navigate = useNavigate();
 
   const logout = () => {
-    axios.get('http://graduate-programs.helwan.edu.eg/law/logout', { withCredentials: true })
+    axios.get('http://localhost:5002/logout', { withCredentials: true })
       .then((res) => {
         navigate('/law/managerLogin')
       }).catch((error) => {
@@ -21,7 +21,7 @@ const Nav = () => {
   // const [user, setUser] = React.useState({})
   // axios.defaults.withCredentials = true
   // useEffect(() => {
-  //   axios.get('http://graduate-programs.helwan.edu.eg/law/student/studentdetails', { withCredentials: true })
+  //   axios.get('http://localhost:5002/student/studentdetails', { withCredentials: true })
   //     .then((res) => {
   //       console.log(res.data)
   //       setUser(res.data)
@@ -41,12 +41,14 @@ const Nav = () => {
       </button>
 
       <ul>
-        {/* <li>
-          <Link to='/manager/programsAndDepartments' >الاقسام و البرامج</Link>
-        </li>
+        
+        
         <li>
-          <Link to='/manager/StudentStatastics' > الاحصائيات </Link>
-        </li> */}
+          <Link to='/law/manager/Appointment' > المواعيد </Link>
+        </li> 
+        <li>
+          <Link to='/law/manager/programsAndDepartments' > تحديد موعد </Link>
+        </li>
         <li>
           <Link to='/law/manager' > عرض جميع الطلاب</Link>
         </li>

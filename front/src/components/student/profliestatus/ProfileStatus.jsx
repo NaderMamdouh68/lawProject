@@ -12,7 +12,7 @@ const ProfileStatus = () => {
 
   axios.defaults.withCredentials = true
   useEffect(() => {
-    axios.get('http://graduate-programs.helwan.edu.eg/law/student/studentdetails', { withCredentials: true })
+    axios.get('http://localhost:5002/student/studentdetails', { withCredentials: true })
       .then((res) => {
         setUser(res.data)
       }).catch((error) => {
@@ -35,20 +35,17 @@ const ProfileStatus = () => {
           <div className="sub-info">
             <span className='title'>{t('app-status')}</span>
             <span className='inner'>
-              {user.status == 1 ? `${t('std-acc-fac')}` : user.status == 2 ? `${t('std-wait')}` : user.status == 3 ? `${t('std-edit')}` : null}
+              {user.comment !== '' ? " تم تحديد موعد ": null}
             </span>
           </div>
         </div>
 
-        {          
-        user.status == 0 || user.status == 1 || user.status == 3 || user.status == 4 || user.status == 5 ?
-        (
-          <h2 style={{color:"red" , direction : "rtl"}}>{user.comment}</h2>
-        )
-        :
-        null
+        
+          
+              <h2 style={{ color: "red", direction: "rtl" }}>{user.comment}</h2>
+            
 
-        }
+        
       </div>
     </section>
   )

@@ -3,6 +3,7 @@ import './login.css'
 import { BsFillPersonVcardFill } from 'react-icons/bs'
 import { RiLockPasswordFill } from 'react-icons/ri'
 import { useNavigate } from 'react-router-dom';
+import img from '../../../images/lg.jpg'
 
 import axios from 'axios'
 
@@ -21,15 +22,15 @@ const ManagerLogin = () => {
     const handleLogin = (e) => {
         e.preventDefault()
         try {
-            axios.post('http://graduate-programs.helwan.edu.eg/law/managerlog/login', loginData, { withCredentials: true })
+            axios.post('http://localhost:5002/managerlog/login', loginData, { withCredentials: true })
                 .then((res) => {
-                    if(res.data.first == true && res.data.manager == true){
+                    if (res.data.first == true && res.data.manager == true) {
                         navigate('/law/managerLogin/restpass')
-                    }else if(res.data.first == true && res.data.manager == false){
+                    } else if (res.data.first == true && res.data.manager == false) {
                         navigate('/law/managerLogin')
-                    }else if(res.data.first == false && res.data.manager == true){
+                    } else if (res.data.first == false && res.data.manager == true) {
                         navigate('/law/manager')
-                    }else if(res.data.first == false && res.data.manager == false){
+                    } else if (res.data.first == false && res.data.manager == false) {
                         navigate('/law/managerLogin')
                     }
                 }).catch((error) => {
@@ -52,7 +53,7 @@ const ManagerLogin = () => {
 
                 <section className='subCon'>
 
-                    <img src="assets/mini-logo.png" alt="" className='mini-logo' />
+                    <img src={img} alt="" className='mini-logo' />
 
                     <div className="body">
                         <div className="top">

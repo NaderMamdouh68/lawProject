@@ -1,5 +1,5 @@
 
-import React,{useState} from 'react'
+import React, { useState } from 'react'
 import './navbar.css'
 import { useTranslation } from 'react-i18next';
 
@@ -11,7 +11,7 @@ import { t } from 'i18next';
 
 
 const Navbar = ({ User }) => {
-  const [user, setUser] = useState({})  
+  const [user, setUser] = useState({})
   const [t, i18n] = useTranslation();
   const [toggle, setToggle] = useState(true);
 
@@ -26,7 +26,7 @@ const Navbar = ({ User }) => {
   const logout = () => {
     try {
       axios.defaults.withCredentials = true
-      axios.get('http://graduate-programs.helwan.edu.eg/law/logout', { withCredentials: true })
+      axios.get('http://localhost:5002/logout', { withCredentials: true })
         .then((res) => {
           navigate('/law/login')
         }).catch((error) => {
@@ -38,13 +38,13 @@ const Navbar = ({ User }) => {
   }
 
   return (
-    <nav  style={localStorage.getItem('i18nextLng') == "ar" ? { direction: "ltr" } : { direction: "rtl" }}>
+    <nav style={localStorage.getItem('i18nextLng') == "ar" ? { direction: "ltr" } : { direction: "rtl" }}>
       <div>
-      <button
-        onClick={logout}
-        className="btn">{t('logout')}
-      </button>
-      <button onClick={handleClick} className='lan-btn' style={{margin:"0 .5rem"}}>{localStorage.getItem('i18nextLng') == "en" ? ("عربي") : ("English") }</button>
+        <button
+          onClick={logout}
+          className="btn">{t('logout')}
+        </button>
+        <button onClick={handleClick} className='lan-btn' style={{ margin: "0 .5rem" }}>{localStorage.getItem('i18nextLng') == "en" ? ("عربي") : ("English")}</button>
       </div>
       <ul>
         <li>

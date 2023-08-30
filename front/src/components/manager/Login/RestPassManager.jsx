@@ -23,7 +23,7 @@ const RestPassManager = () => {
     const handleLogin = (e) => {
         e.preventDefault()
         try {
-            axios.put('http://graduate-programs.helwan.edu.eg/law/managerlog/resetpassword', loginData, { withCredentials: true })
+            axios.put('http://localhost:5002/managerlog/resetpassword', loginData, { withCredentials: true })
                 .then((res) => {
                     navigate('/manager')
                 }).catch((error) => {
@@ -46,7 +46,7 @@ const RestPassManager = () => {
 
                 <section className='subCon'>
 
-                    
+
 
                     <div className="body">
                         <div className="top">
@@ -56,7 +56,7 @@ const RestPassManager = () => {
                         </div>
                         <div className="content" style={{ marginTop: "6rem", gap: "3rem" }}>
                             <div className="input-container" style={{ gap: "2rem", }}>
-                            <RiLockPasswordFill className='Icon' style={{ fontSize: "3.5rem" }} />
+                                <RiLockPasswordFill className='Icon' style={{ fontSize: "3.5rem" }} />
                                 <input
                                     type="text"
                                     placeholder='ادخل كلمه مرور جديده'
@@ -74,7 +74,7 @@ const RestPassManager = () => {
                                     style={{ cursor: "text", height: "4rem" }}
                                     value={loginData.confirmPassword} onChange={(e) => { setLoginData({ ...loginData, confirmPassword: e.target.value }) }}
                                 />
-                                
+
                             </div>
                             <div className="actions">
                                 <button onClick={handleLogin}> تسجيل الدخول </button>

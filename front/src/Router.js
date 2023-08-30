@@ -25,6 +25,7 @@ import RestPassManager from "./components/manager/Login/RestPassManager.jsx";
 import StudentStat from "./components/manager/manage/studentList/StudentStat.jsx";
 import Verify from "./components/reset-pass/Verify.jsx";
 import Reset from "./components/reset-pass/Reset.jsx";
+import Appointment from "./components/manager/manage/ProgramsAndDepartments/Appointment.jsx";
 
 
 
@@ -111,6 +112,10 @@ const Router = createBrowserRouter([
           {
             path: "/law/manager/programsAndDepartments",
             element:<ProgramAndDepartment/>
+          },
+          {
+            path: "/law/manager/Appointment",
+            element:<Appointment/>
           },
           {
             path: "/law/manager/StudentStatastics",

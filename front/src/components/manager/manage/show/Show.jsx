@@ -29,7 +29,7 @@ const Show = () => {
   useEffect(() => {
     localStorage.setItem('i18nextLng', 'ar')
 
-    axios.get('http://graduate-programs.helwan.edu.eg/law/student/studentdetails/' + id, { withCredentials: true })
+    axios.get('http://localhost:5002/student/studentdetails/' + id, { withCredentials: true })
       .then((res) => {
         setUser(res.data)
         // console.log(res.data)
@@ -74,15 +74,15 @@ const Show = () => {
   const handelAccept = () => {
     try {
       if (msg !== "") {
-      if (window.confirm("هل انت متاكد من قبول الطالب")) {
-      axios.put('http://graduate-programs.helwan.edu.eg/law/manager/updatestatus/' + id, { status: 1 , comment: msg}, { withCredentials: true })
-        .then((res) => {
-          window.location.reload()
-        }).catch((error) => {
-          console.log(error.response)
+        if (window.confirm("هل انت متاكد من قبول الطالب")) {
+          axios.put('http://localhost:5002/manager/updatestatus/' + id, { status: 1, comment: msg }, { withCredentials: true })
+            .then((res) => {
+              window.location.reload()
+            }).catch((error) => {
+              console.log(error.response)
 
-        })
-      }
+            })
+        }
       } else {
         alert("يجب ادخال رساله القبول")
       }
@@ -92,19 +92,19 @@ const Show = () => {
   }
   const handelwait = () => {
     if (editRes !== "") {
-      if(window.confirm("هل انت متاكد من طلب تعديل البيانات")){
-      try {
-        axios.put('http://graduate-programs.helwan.edu.eg/law/manager/updatestatus/' + id, { status: "3", comment: editRes }, { withCredentials: true })
-          .then((res) => {
-            window.location.reload()
-          }).catch((error) => {
-            console.log(error.response)
+      if (window.confirm("هل انت متاكد من طلب تعديل البيانات")) {
+        try {
+          axios.put('http://localhost:5002/manager/updatestatus/' + id, { status: "3", comment: editRes }, { withCredentials: true })
+            .then((res) => {
+              window.location.reload()
+            }).catch((error) => {
+              console.log(error.response)
 
-          })
-      } catch (error) {
-        console.log(error)
+            })
+        } catch (error) {
+          console.log(error)
+        }
       }
-    }
     }
     else {
       alert("يجب ادخال سبب التعديل")
@@ -127,45 +127,45 @@ const Show = () => {
         </div>
         <div className="data-container" ref={pdfRef}>
           <div className='image-con'>
-            <img src={`http://graduate-programs.helwan.edu.eg/law/${user.national_id}/${user.img}`} alt="img" className='imagee' />
+            <img src={`http://localhost:5002/${user.national_id}/${user.img}`} alt="img" className='imagee' />
             {user.status == 1 ? (
+              <>
+                <p style={{ background: "rgb(35, 175, 110)" }}> تم ارسال معاد المقابله</p>
+                <h2> معاد المقابله</h2>
+                <p style={{ background: "rgb(35, 175, 110) " }}>{user.comment}</p>
+              </>
+            )
+              : user.status == 2 ?
                 <>
-                  <p style={{ background: "rgb(35, 175, 110)" }}> تم ارسال معاد المقابله</p>
-                  <h2> معاد المقابله</h2>
-                  <p style={{ background: "rgb(35, 175, 110) "}}>{user.comment}</p>
+                  <button onClick={handelAccept} className='acc'>ارسال معاد المقابله</button>
+                  <input
+                    type="date"
+                    value={msg}
+                    onChange={(e) => { SetMsg(e.target.value) }}
+                  />
+
+
+
+                  <button onClick={handelwait} className='wait-edit'>طلب تعديل البيانات</button>
+                  <input
+                    type="text"
+                    placeholder='سبب التعديل'
+                    value={editRes}
+                    onChange={(e) => { SetEditRes(e.target.value) }}
+                  />
+
+
+
+
+
                 </>
-              )
-                : user.status == 2 ?
+                : (
                   <>
-                    <button onClick={handelAccept} className='acc'>ارسال معاد المقابله</button>
-                    <input
-                      type="date"
-                      value={msg}
-                      onChange={(e) => { SetMsg(e.target.value) }}
-                    />
-
-
-
-                    <button onClick={handelwait} className='wait-edit'>طلب تعديل البيانات</button>
-                    <input
-                      type="text"
-                      placeholder='سبب التعديل'
-                      value={editRes}
-                      onChange={(e) => { SetEditRes(e.target.value)}}
-                    />
-
-
-
-
-
+                    <p >يرجى التعديل</p>
+                    <h2>سبب التعديل</h2>
+                    <p >{user.comment}</p>
                   </>
-                  : (
-                    <>
-                      <p >يرجى التعديل</p>
-                      <h2>سبب التعديل</h2>
-                      <p >{user.comment}</p>
-                    </>
-                  )}
+                )}
           </div>
           <table className="data-table" style={localStorage.getItem('i18nextLng') == "ar" ? { direction: "rtl" } : { direction: "ltr" }}>
             <tr>
@@ -230,13 +230,13 @@ const Show = () => {
             <tr>
               <td>{t('enDegname')}</td>
               <td>
-               {user.enDegname}
+                {user.enDegname}
               </td>
             </tr>
             <tr>
               <td>{t('enDeg')}</td>
               <td>
-               {user.enDeg}
+                {user.enDeg}
               </td>
             </tr>
             <tr>
@@ -289,24 +289,24 @@ const Show = () => {
               </td>
             </tr>
 
-            
+
             <tr>
               <td>{t('department')}</td>
               <td>
-                {localStorage.getItem('i18nextLng') == "ar" ? user.department_name_ar : user.department_name} 
-                    
+                {localStorage.getItem('i18nextLng') == "ar" ? user.department_name_ar : user.department_name}
+
               </td>
             </tr>
-            
-            
-            
+
+
+
             <tr>
               <td>{t('dateOfsubmition')}</td>
               <td>
                 {(user.submission_date?.split('T')[0]) || ''}
               </td>
             </tr>
-            
+
           </table>
         </div>
 
@@ -325,11 +325,11 @@ const Show = () => {
               <td>صورة البطاقه الشخصيه</td>
               <td className='att-row'>
                 <button
-                  onClick={() => { openImage(`http://graduate-programs.helwan.edu.eg/law/${user.national_id}/${user.photo_national_id}`) }}
+                  onClick={() => { openImage(`http://localhost:5002/${user.national_id}/${user.photo_national_id}`) }}
                   style={{ background: "#003C70" }} class="atch-btn">Open
                 </button>
                 <button
-                  onClick={() => { downloadImage(`http://graduate-programs.helwan.edu.eg/law/${user.national_id}/${user.photo_national_id}`) }}
+                  onClick={() => { downloadImage(`http://localhost:5002/${user.national_id}/${user.photo_national_id}`) }}
                   style={{ background: "#AD8700" }} class="atch-btn">Download
                 </button>
 
@@ -343,11 +343,11 @@ const Show = () => {
               <td>صورة شهاده الميلاد</td>
               <td className='att-row'>
                 <button
-                  onClick={() => { openImage(`http://graduate-programs.helwan.edu.eg/law/${user.national_id}/${user.birth_certificate}`) }}
+                  onClick={() => { openImage(`http://localhost:5002/${user.national_id}/${user.birth_certificate}`) }}
                   style={{ background: "#003C70" }} class="atch-btn">Open
                 </button>
                 <button
-                  onClick={() => { downloadImage(`http://graduate-programs.helwan.edu.eg/law/${user.national_id}/${user.birth_certificate}`) }}
+                  onClick={() => { downloadImage(`http://localhost:5002/${user.national_id}/${user.birth_certificate}`) }}
                   style={{ background: "#AD8700" }} class="atch-btn">Download
                 </button>
 
@@ -362,11 +362,11 @@ const Show = () => {
               <td>صورة شهاده الثانويه العامه</td>
               <td className='att-row'>
                 <button
-                  onClick={() => { openImage(`http://graduate-programs.helwan.edu.eg/law/${user.national_id}/${user.academic_qualification}`) }}
+                  onClick={() => { openImage(`http://localhost:5002/${user.national_id}/${user.academic_qualification}`) }}
                   style={{ background: "#003C70" }} class="atch-btn">Open
                 </button>
                 <button
-                  onClick={() => { downloadImage(`http://graduate-programs.helwan.edu.eg/law/${user.national_id}/${user.academic_qualification}`) }}
+                  onClick={() => { downloadImage(`http://localhost:5002/${user.national_id}/${user.academic_qualification}`) }}
                   style={{ background: "#AD8700" }} class="atch-btn">Download
                 </button>
 
@@ -375,7 +375,7 @@ const Show = () => {
             </tr>
           ) : null}
 
-          
+
 
         </table>
 

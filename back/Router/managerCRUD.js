@@ -39,6 +39,7 @@ manager.get('/allaaplication',
   SELECT
     application.status,
     application.submission_date,
+    application.comment,
     students.*,
     departments_of_faculty.department_name,
     departments_of_faculty.department_name_ar
@@ -54,6 +55,63 @@ manager.get('/allaaplication',
             res.status(200).json(managerdetails);
         } catch (err) {
             res.status(500).json({ msg: err });
+        }
+    });
+
+manager.put('/addappointment',
+    checkmanager,
+    body('appointment').notEmpty().withMessage('appointment is required'),
+    body('student_number').notEmpty().withMessage('student_number is required'),
+    body('limitdegree').notEmpty().withMessage('limitdegree is required'),
+
+    async (req, res) => {
+        try {
+            let Student = [];
+            const errors = validationResult(req);
+            if (!errors.isEmpty()) {
+                return res.status(400).json({ errors: { msg: errors.array().map((err) => err.msg) } });
+            }
+
+            const sqlSelect = "SELECT students.* ,application.* FROM application INNER JOIN students ON application.student_id = students.student_id WHERE students.enDeg >= ? AND application.comment = '' limit ? ";
+            const values = [req.body.limitdegree, +req.body.student_number];
+            const students = await query(sqlSelect, values);
+            if (!students[0]) {
+                return res.status(404).json({ errors: [{ msg: "Students not found !" }] });
+            } else {
+
+                for (let i = 0; i < students.length; i++) {
+                    const sqlUpdate = `UPDATE application
+                                       SET comment = ?
+                                       WHERE student_id IN (
+                                           SELECT students.student_id
+                                           FROM application
+                                           INNER JOIN students ON application.student_id = students.student_id
+                                           WHERE students.enDeg >= ? AND application.comment = ''
+                                       ) AND student_id = ?`;
+
+                    const values = [req.body.appointment, req.body.limitdegree, students[i].student_id];
+
+
+                    try {
+                        const result = await query(sqlUpdate, values);
+                        if (result.affectedRows === 0) {
+                            return res.status(404).json({ errors: [{ msg: "Students not found !" }] });
+                        } else {
+                            const sqlSelect = "SELECT students.* ,application.* FROM application INNER JOIN students ON application.student_id = students.student_id WHERE students.enDeg >= ? AND application.comment = ? ";
+                            const values = [req.body.limitdegree, req.body.appointment];
+                            const students = await query(sqlSelect, values);
+                            Student.push(students[i]);
+                            
+                        }
+                    } catch (err) {
+                        return res.status(400).json({ errors: [{ msg: `Error: ${err}` }] });
+                    }
+                }
+                res.status(200).json(Student);
+
+            }
+        } catch (err) {
+            res.status(500).json({ errors: [{ msg: `Error: ${err} ` }] });
         }
     });
 
@@ -102,7 +160,7 @@ manager.get('/alldepartment',
     checkmanager,
     async (req, res) => {
         try {
-            
+
 
             const managerdetails = await query(`SELECT  * FROM departments_of_faculty `);
             res.status(200).json(managerdetails);

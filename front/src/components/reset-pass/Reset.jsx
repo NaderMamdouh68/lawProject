@@ -26,14 +26,14 @@ const Reset = () => {
 
         try {
             //غير ال ا بى اى
-            axios.put('http://graduate-programs.helwan.edu.eg/law/resetpassword', loginData, { withCredentials: true })
+            axios.put('http://localhost:5002/resetpassword', loginData, { withCredentials: true })
                 .then((res) => {
                     setError('')
                     console.log(res.data.reset)
                     if (res.data.reset == true) {
                         navigate('/login')
                     }
-                    
+
                 }).catch((error) => {
                     console.log(error.response.data.errors[0])
                     setError(error.response.data.errors[0])

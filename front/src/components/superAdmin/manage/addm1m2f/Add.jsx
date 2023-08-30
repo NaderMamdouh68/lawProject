@@ -27,7 +27,7 @@ const Addm1m2f = () => {
   })
   axios.defaults.withCredentials = true
   useEffect(() => {
-    axios.get('http://graduate-programs.helwan.edu.eg/law/superadmin/allFaculty', { withCredentials: true })
+    axios.get('http://localhost:5002/superadmin/allFaculty', { withCredentials: true })
       .then((res) => {
         setFacuality(res.data)
       }).catch((error) => {
@@ -37,7 +37,7 @@ const Addm1m2f = () => {
 
       })
 
-    axios.get('http://graduate-programs.helwan.edu.eg/law/superadmin/allmanager2', { withCredentials: true })
+    axios.get('http://localhost:5002/superadmin/allmanager2', { withCredentials: true })
       .then((res) => {
         setManagers(res.data)
       }
@@ -48,12 +48,12 @@ const Addm1m2f = () => {
       }
       )
 
-    axios.get('http://graduate-programs.helwan.edu.eg/law/superadmin/allmanager1', { withCredentials: true })
+    axios.get('http://localhost:5002/superadmin/allmanager1', { withCredentials: true })
       .then((res) => {
         setManagers2(res.data)
       }
       ).catch((error) => {
-      
+
         if (error.response.data.Admin === false) {
           navigate('/superAdminLogin')
         }
@@ -65,8 +65,8 @@ const Addm1m2f = () => {
     if (document.querySelector('.add-department input').value !== '') {
       let con = window.confirm('هل انت متاكد من اضافه الكليه')
       if (con) {
-        
-        axios.post('http://graduate-programs.helwan.edu.eg/law/superadmin/addfaculty', addFacuality, { withCredentials: true })
+
+        axios.post('http://localhost:5002/superadmin/addfaculty', addFacuality, { withCredentials: true })
           .then((res) => {
             window.location.reload()
           }).catch((error) => {
@@ -77,13 +77,13 @@ const Addm1m2f = () => {
     }
   }
 
-  
+
 
 
   const handleEdit = (index) => {
     let con = window.confirm('هل انت متاكد من التعديل')
     if (con) {
-      axios.post('http://graduate-programs.helwan.edu.eg/law/superadmin/updatefaculty', facuality[index], { withCredentials: true })
+      axios.post('http://localhost:5002/superadmin/updatefaculty', facuality[index], { withCredentials: true })
         .then((res) => {
           window.location.reload()
         }).catch((error) => {
@@ -94,7 +94,7 @@ const Addm1m2f = () => {
   const handleEditm1 = (index) => {
     let con = window.confirm('هل انت متاكد من التعديل')
     if (con) {
-      axios.put('http://graduate-programs.helwan.edu.eg/law/superadmin/updatemanager1', managers[index], { withCredentials: true })
+      axios.put('http://localhost:5002/superadmin/updatemanager1', managers[index], { withCredentials: true })
         .then((res) => {
           window.location.reload()
         }).catch((error) => {
@@ -105,7 +105,7 @@ const Addm1m2f = () => {
   const handleEditm2 = (index) => {
     let con = window.confirm('هل انت متاكد من التعديل')
     if (con) {
-      axios.put('http://graduate-programs.helwan.edu.eg/law/superadmin/updatemanager2', managers2[index], { withCredentials: true })
+      axios.put('http://localhost:5002/superadmin/updatemanager2', managers2[index], { withCredentials: true })
         .then((res) => {
           window.location.reload()
         }).catch((error) => {
@@ -117,7 +117,7 @@ const Addm1m2f = () => {
     if (document.querySelector('.add-p input').value !== '' && document.querySelector('.add-p select').value !== '') {
       let con = window.confirm('هل انت متاكد من اضافه الموظف')
       if (con) {
-        axios.post('http://graduate-programs.helwan.edu.eg/law/superadmin/addmanager1', addManager, { withCredentials: true })
+        axios.post('http://localhost:5002/superadmin/addmanager1', addManager, { withCredentials: true })
           .then((res) => {
             alert('تم اضافه الموظف')
             window.location.reload()
@@ -131,17 +131,17 @@ const Addm1m2f = () => {
   }
 
   const addm2 = () => {
-      let con = window.confirm('هل انت متاكد من اضافه الموظف')
-      if (con) {
-        axios.post('http://graduate-programs.helwan.edu.eg/law/superadmin/addmanager2', addManager, { withCredentials: true })
-          .then((res) => {
-            alert('تم اضافه الموظف')
-            window.location.reload()
-          }).catch((error) => {
-            setErroe(error.response.data.errors.msg)
-          })
-      }
+    let con = window.confirm('هل انت متاكد من اضافه الموظف')
+    if (con) {
+      axios.post('http://localhost:5002/superadmin/addmanager2', addManager, { withCredentials: true })
+        .then((res) => {
+          alert('تم اضافه الموظف')
+          window.location.reload()
+        }).catch((error) => {
+          setErroe(error.response.data.errors.msg)
+        })
     }
+  }
 
 
 
@@ -195,7 +195,7 @@ const Addm1m2f = () => {
                       updatedFacuality[index] = { ...item, faculty_name_ar: e.target.value };
                       setFacuality(updatedFacuality);
                     }} /></td>
-                    <td><button onClick={()=>{handleEdit(index)}}>تعديل</button></td>
+                    <td><button onClick={() => { handleEdit(index) }}>تعديل</button></td>
                   </tr>
                 )
               })}
@@ -281,9 +281,9 @@ const Addm1m2f = () => {
                       setManagers(updatedManagers);
                     }} /></td>
                     <td>{manager.faculty_name_ar}</td>
-                    <td><button onClick={()=>{handleEditm1(index)}}>تعديل</button></td>
+                    <td><button onClick={() => { handleEditm1(index) }}>تعديل</button></td>
                   </tr>
-                  
+
                 )
               }
               )}
@@ -364,7 +364,7 @@ const Addm1m2f = () => {
                       setManagers2(updatedManagers);
                     }} /></td>
                     <td>{manager.faculty_name_ar}</td>
-                    <td><button onClick={()=>{handleEditm2(index)}}>تعديل</button></td>
+                    <td><button onClick={() => { handleEditm2(index) }}>تعديل</button></td>
                   </tr>
 
                 )
