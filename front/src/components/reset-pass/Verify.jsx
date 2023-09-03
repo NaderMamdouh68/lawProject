@@ -34,7 +34,6 @@ const Verify = () => {
             axios.post('http://localhost:5002/verify', loginData, { withCredentials: true })
                 .then((res) => {
                     setError('')
-                    console.log(res.data.verify)
                     if (res.data.verify == true) {
                         navigate('/reset/' + res.data.student_id)
 

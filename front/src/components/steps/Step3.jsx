@@ -160,6 +160,37 @@ const Step3 = ({ UserData, SetUserData, Images, SetImages ,Error ,Loaded}) => {
             {counter = counter + 1}
           </div>
         </div>
+        <div className="input-img-container gridChange">
+          <span className='labelChooes'>{t('img-5')} </span>
+          <label htmlFor="image5" className='inputIN'>
+            {
+              Images.image5 ? `${Images.image5.name}` : `${t('choose-file')} `
+            }
+          </label>
+
+          <input
+            type="file"
+            name="image5"
+            id="image5"
+            style={{ display: "none" }}
+            onChange={(e) => {
+              const file = e.target.files[0];
+              SetImages({ ...Images, image5: file });
+            }}
+          />
+          {Images.image5 && (
+            <>
+              {Images.image5.type === "application/pdf" ? <FaRegFilePdf style={{ fontSize: "10rem", margin: "3% auto", color: "red" }} /> : <img src={URL.createObjectURL(Images.image5)} alt="Preview Image" className='Preview-Image' />}
+              <div className="div-icon" onClick={() => { SetImages({ ...Images, image5: "" }) }}>
+                <AiTwotoneDelete />
+              </div>
+            </>
+
+          )}
+          <div style={{ display: "none" }}>
+            {counter = counter + 1}
+          </div>
+        </div>
 
         
         

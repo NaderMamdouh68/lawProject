@@ -116,8 +116,8 @@ const StudentList = () => {
               <tr>
                 <th> التسلسل</th>
                 <th>اسم الطالب</th>
-                <th>رقم الهوية الوطنية</th>
-                <th>القسم</th>
+                {/* <th>رقم الهوية الوطنية</th> */}
+                {/* <th>القسم</th> */}
                 <th> اللغه الاجنبيه الاولي</th>
                 <th> درجه اللغه الاجنبيه الاولي</th>
                 <th> اللغه الاجنبيه الثانيه</th>
@@ -132,17 +132,16 @@ const StudentList = () => {
                 <tr key={item.student_id}>
                   <td>{index + 1}</td>
                   <td>{item.student_name}</td>
-                  <td>{item.national_id}</td>
-                  <td>{item.department_name_ar}</td>
+                  {/* <td>{item.national_id}</td> */}
+                  {/* <td>{item.department_name_ar}</td> */}
                   <td>{item.enDegname}</td>
-                    <td>{item.enDeg}</td>
-                    <td>{item.enDegname2}</td>
-                    <td>{item.enDeg2}</td>
+                  <td>{item.enDeg}</td>
+                  <td>{item.enDegname2}</td>
+                  <td>{item.enDeg2}</td>
                   <td>
-                    {item.status === 0 ? 'مرفوض' :
-                      item.status === 1 ? 'تم ارسال تاريج الحضور' :
-                        item.status === 2 ? 'قيد الانتظار' :
-                          item.status === 3 ? 'قيد التعديل' : null}
+                    {item.status === 1 ? 'قيد الانتظار' :
+                      item.status === 2 ? 'تم ارسال تاريج الحضور' :
+                        item.status === 3 ? 'قيد التعديل' : null}
                   </td>
                   <td>{item.submission_date.slice(0, 10)}</td>
                   <td>

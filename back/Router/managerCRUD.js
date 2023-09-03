@@ -34,7 +34,6 @@ manager.get('/allaaplication',
     async (req, res) => {
         try {
 
-            console.log(req);
             const managerdetails = await query(`
   SELECT
     application.status,
@@ -81,7 +80,7 @@ manager.put('/addappointment',
 
                 for (let i = 0; i < students.length; i++) {
                     const sqlUpdate = `UPDATE application
-                                       SET comment = ?
+                                       SET comment = ?, status = 2 , comment2 = ?
                                        WHERE student_id IN (
                                            SELECT students.student_id
                                            FROM application
@@ -89,7 +88,7 @@ manager.put('/addappointment',
                                            WHERE students.enDeg >= ? AND application.comment = ''
                                        ) AND student_id = ?`;
 
-                    const values = [req.body.appointment, req.body.limitdegree, students[i].student_id];
+                    const values = [req.body.appointment, req.body.comment, req.body.limitdegree, students[i].student_id];
 
 
                     try {
@@ -101,7 +100,7 @@ manager.put('/addappointment',
                             const values = [req.body.limitdegree, req.body.appointment];
                             const students = await query(sqlSelect, values);
                             Student.push(students[i]);
-                            
+
                         }
                     } catch (err) {
                         return res.status(400).json({ errors: [{ msg: `Error: ${err}` }] });
@@ -396,8 +395,12 @@ manager.put('/updatestatus/:id',
                 return res.status(404).json({ errors: [{ msg: "Student not found !" }] });
             }
 
-
-            const sqlUpdate = "UPDATE application SET status = ? , comment = ?  WHERE student_id = ? ";
+            let sqlUpdate = "";
+            if (req.body.status == 3) {
+                sqlUpdate = "UPDATE application SET status = ? , comment2 = ?  WHERE student_id = ? ";
+            } else if (req.body.status == 1) {
+                sqlUpdate = "UPDATE application SET status = ? , comment = ?  WHERE student_id = ? ";
+            }
             const values = [req.body.status, req.body.comment, req.params.id];
             await query(sqlUpdate, values, (err, result) => {
                 if (err) {

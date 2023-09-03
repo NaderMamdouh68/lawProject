@@ -21,7 +21,8 @@ const ProgramAndDepartment = () => {
   const [appointment, setAppointment] = React.useState({
     appointment: '',
     student_number: '',
-    limitdegree: ''
+    limitdegree: '',
+    comment: ''
   })
 
 
@@ -198,6 +199,11 @@ const ProgramAndDepartment = () => {
                 onChange={(e) => { setAppointment({ ...appointment, student_number: e.target.value }) }}
                 type="text"
                 placeholder=' عدد الطلاب ' />
+              <input
+                id='add-p'
+                onChange={(e) => { setAppointment({ ...appointment, comment: e.target.value }) }}
+                type="text"
+                placeholder=' الرساله التي ستظهر للطلاب ' />
 
               <input
                 id='add-date'

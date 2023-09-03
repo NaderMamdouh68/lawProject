@@ -47,9 +47,9 @@ const Navbar = ({ User }) => {
         <button onClick={handleClick} className='lan-btn' style={{ margin: "0 .5rem" }}>{localStorage.getItem('i18nextLng') == "en" ? ("عربي") : ("English")}</button>
       </div>
       <ul>
-        <li>
+        {/* <li>
           <Link to='/law/profile/contact' >{t('contact')}</Link>
-        </li>
+        </li> */}
         <li>
           {User.status === 3 ? (
             <Link to='/law/profile/edit'>{t('edit')}</Link>

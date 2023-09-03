@@ -29,7 +29,6 @@ const Reset = () => {
             axios.put('http://localhost:5002/resetpassword', loginData, { withCredentials: true })
                 .then((res) => {
                     setError('')
-                    console.log(res.data.reset)
                     if (res.data.reset == true) {
                         navigate('/login')
                     }

@@ -144,7 +144,7 @@ const Appointment = () => {
                   </tr>
 
                   {data.map((item2, index2) => {
-                  if (item2.comment !=='' ) { 
+                  if (+item2.status === 2) {
                     return (
 
                   <tr>

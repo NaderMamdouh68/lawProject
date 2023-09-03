@@ -7,6 +7,7 @@ import cors from "cors";
 import upload from '../MiddleWare/Uplodeimgs.js';
 import fs from 'fs';
 import user from '../MiddleWare/checkStudent.js';
+import e from 'express';
 
 const newApp = express();
 newApp.use(express.Router());
@@ -80,7 +81,7 @@ newApp.post('/signup',
 
             /*==================================  check if all the files are image  ==================================*/
 
-            for (let i = 1; i <= 4; i++) {
+            for (let i = 1; i <= 5; i++) {
                 
                 if (!req.files[`image${i}`]) {
                     continue;
@@ -88,7 +89,7 @@ newApp.post('/signup',
                 let file = req.files[`image${i}`][0].mimetype || 0;
                 if (file != "image/jpeg" && file != "image/jpg" && file != "image/png" && file != "image/webp" && file != "application/pdf"){
                     hanleDelUplodes(req);
-                    return res.status(400).json({ errors: { msg: ["Please upload all the required files as image"] } });
+                    return res.status(400).json({ errors: { msg: ["Please upload all the required files as image or pdf"] } });
                 }
             }
             /*==================================  check if all the files are image  ==================================*/
@@ -112,7 +113,7 @@ newApp.post('/signup',
 
             const maxFileSize = 1024 * 1024 * 2;
             const sizeinMB = maxFileSize / (1024 * 1024);
-            let number_of_files = 2;
+            let number_of_files = 5;
 
             const array_of_filename_photo = [];
             for (let i = 1; i <= number_of_files; i++) {
@@ -132,6 +133,8 @@ newApp.post('/signup',
                         str = "Birth Certificate ";
                     }else if(i == 4){
                         str = "Certificate of Secondary Education Qualification ";
+                    }else if(i == 5){
+                        str = "Please upload all the required files ";
                     }
                     return res.status(400).json({ errors: { msg: [`Please upload  ${str} Image less than ${sizeinMB} MB `] } });
                 }
@@ -142,7 +145,7 @@ newApp.post('/signup',
 
 
             /*==================================  store the file name in array  ==================================*/
-            for (let i = 1; i <= 4; i++) {
+            for (let i = 1; i <= 5; i++) {
                 if (!req.files[`image${i}`]) {
                     array_of_filename_photo.push(0);
                 } else {
@@ -178,6 +181,7 @@ newApp.post('/signup',
                 photo_national_id: array_of_filename_photo[1],
                 birth_certificate: array_of_filename_photo[2],
                 academic_qualification: array_of_filename_photo[3],
+                other: array_of_filename_photo[4],
                 
                 
             };
@@ -196,7 +200,7 @@ newApp.post('/signup',
                     const applicationData = {
                         student_id: student_id,
                         department_id: req.body.department,
-                        status: "2",
+                        status: "1",
                         submission_date: new Date(),
                     };
                     const sqlInsert2 = "INSERT INTO `application` SET ?";

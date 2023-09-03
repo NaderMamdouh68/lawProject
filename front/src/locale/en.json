@@ -58,7 +58,7 @@
     "img-2": "Add a personal card",
     "img-3": "Add a birth certificate",
     "img-4": "Add certificate of secondary education",
-    "img-5": "Add grades statement",
+    "img-5": "Add nomination card",
     "img-6": "Add a good conduct form",
     "img-7": "Add the approval of the employer",
     "img-8": "Add the position of military Status ",
@@ -69,7 +69,7 @@
     "img-profile-3": "a birth certificate",
     "img-profile-4": "qualification",
     "img-profile-5": "grades statement",
-    "img-profile-6": "a good conduct form",
+    "img-profile-6": "Nomination card",
     "img-profile-7": "the approval of the employer",
     "img-profile-8": "the position of recruitment",
     "img-profile-9": "a master's photo",
@@ -107,5 +107,6 @@
     "helwan-uni": " Government University  ",
     "uni": " University ",
     "f-pass": " Forget password ",
-    "r-pass": " Reset password "
+    "r-pass": " Reset password ",
+    "meet": "No date has been set for the interview yet."
 }

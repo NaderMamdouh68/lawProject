@@ -32,7 +32,6 @@ admin.get('/allaaplication',
                 search = `where faculty.faculty_id LIKE '%${req.query.search}%'`;
             }
 
-            console.log(req.faculty_id);
             const admindetails = await query(`SELECT  faculty.faculty_name , faculty.faculty_name_ar,application.status ,application.submission_date , students.* ,departments_of_faculty.department_name , departments_of_faculty.department_name_ar , programs_of_department.program_name ,programs_of_department.program_name_ar FROM application inner join students on application.student_id = students.student_id inner join faculty on application.faculty_id = faculty.faculty_id inner join departments_of_faculty on application.department_id = departments_of_faculty.department_id inner join programs_of_department on application.program_id = programs_of_department.program_id WHERE faculty.faculty_id = ${req.faculty_id} AND (application.status = 1 OR application.status = 4 OR application.status = 5)`);
             if (admindetails != 0) {
                 delete admindetails[0].password;

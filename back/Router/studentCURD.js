@@ -9,6 +9,7 @@ import user from "../MiddleWare/checkStudent.js";
 import checkmanager from "../MiddleWare/checkManager.js";
 import checkSuperAdmin from "../MiddleWare/checkSuperAdmin.js";
 import checkadmin from "../MiddleWare/checkAdmin.js";
+import e from "express";
 
 
 const student = express();
@@ -40,7 +41,7 @@ student.get('/studentdetails/:id',
     checkmanager,
     async (req, res) => {
         try {
-            const sqlShow = "SELECT application.status,application.comment, application.submission_date, students.*, departments_of_faculty.department_name, departments_of_faculty.department_name_ar  FROM application INNER JOIN students ON application.student_id = students.student_id  INNER JOIN departments_of_faculty ON application.department_id = departments_of_faculty.department_id  WHERE application.student_id = ?";
+            const sqlShow = "SELECT application.status,application.comment,application.comment2, application.submission_date, students.*, departments_of_faculty.department_name, departments_of_faculty.department_name_ar  FROM application INNER JOIN students ON application.student_id = students.student_id  INNER JOIN departments_of_faculty ON application.department_id = departments_of_faculty.department_id  WHERE application.student_id = ?";
             const values = [req.params.id];
 
             const studentdetails = await query(sqlShow, values);
@@ -96,7 +97,7 @@ student.get('/studentdetails',
     user,
     async (req, res) => {
         try {
-            const sqlShow = "SELECT application.status, application.submission_date,application.comment, students.*, departments_of_faculty.*  FROM application INNER JOIN students ON application.student_id = students.student_id INNER JOIN departments_of_faculty ON application.department_id = departments_of_faculty.department_id  WHERE application.student_id = ?";
+            const sqlShow = "SELECT application.status, application.submission_date,application.comment, application.comment2 ,students.*, departments_of_faculty.*  FROM application INNER JOIN students ON application.student_id = students.student_id INNER JOIN departments_of_faculty ON application.department_id = departments_of_faculty.department_id  WHERE application.student_id = ?";
             const values = [req.student_id];
 
             const studentdetails = await query(sqlShow, values);
@@ -163,7 +164,7 @@ student.put('/studentupdate',
 
             const maxFileSize = 1024 * 1024 * 2;
             const sizeinMB = maxFileSize / (1024 * 1024);
-            let number_of_files = 4;
+            let number_of_files = 5;
 
             const array_of_filename_photo = [];
             for (let i = 1; i <= number_of_files; i++) {
@@ -183,6 +184,8 @@ student.put('/studentupdate',
                         str = "Birth Certificate ";
                     }else if(i == 4){
                         str = "Certificate of Secondary Education Qualification ";
+                    }else if(i == 5){
+                        str = "Please upload all the required files ";
                     }
                     return res.status(400).json({ errors: { msg: [`Please upload  ${str} Image less than ${sizeinMB} MB `] } });
                 }
@@ -194,6 +197,7 @@ student.put('/studentupdate',
                 photo_national_id: req.files[`image${2}`] ? req.files[`image${2}`][0].filename : studentdetails[0].photo_national_id,
                 birth_certificate: req.files[`image${3}`] ? req.files[`image${3}`][0].filename : studentdetails[0].birth_certificate,
                 academic_qualification: req.files[`image${4}`] ? req.files[`image${4}`][0].filename : studentdetails[0].academic_qualification,
+                other: req.files[`image${5}`] ? req.files[`image${5}`][0].filename : studentdetails[0].other,
                 student_name: req.body.name,
                 national_id: req.body.national_id,
                 email: req.body.email,
@@ -225,7 +229,7 @@ student.put('/studentupdate',
                 } else {
                     const applicationData = {
                         department_id: req.body.department,
-                        status: "2",
+                        status: "1",
                     };
                     const sqlUpdate2 = "UPDATE application SET ?  WHERE student_id = ?";
                     const values2 = [applicationData, req.student_id];

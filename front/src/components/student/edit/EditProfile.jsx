@@ -24,6 +24,7 @@ const EditProfile = () => {
     image2: '',
     image3: '',
     image4: '',
+    image5: '',
 
   })
   const [images, setImages] = React.useState({
@@ -31,6 +32,7 @@ const EditProfile = () => {
     image22: '',
     image33: '',
     image44: '',
+    image55: '',
 
   })
   axios.defaults.withCredentials = true
@@ -99,6 +101,7 @@ const EditProfile = () => {
       formData.append('image2', user.image2)
       formData.append('image3', user.image3)
       formData.append('image4', user.image4)
+      formData.append('image5', user.image5)
       formData.append('name', data.student_name)
       formData.append('email', data.email)
       formData.append('phone', data.phonenumber)
@@ -423,7 +426,7 @@ const EditProfile = () => {
                 </button>
                 <button
                   onClick={() => { changeimage('image2', 'image22') }}
-                  style={{ background: "#003C70" }} class="atch-btn">{t('change')}
+                  style={{ background: "#003C70" }} class="atch-btn">{t('change-1')}
                 </button>
                 <p id='change-1'>{images.image22 != "" ? images.image22 : ""}</p>
               </td>
@@ -447,7 +450,7 @@ const EditProfile = () => {
                 </button>
                 <button
                   onClick={() => { changeimage('image3', 'image33') }}
-                  style={{ background: "#003C70" }} class="atch-btn">{t('change')}
+                  style={{ background: "#003C70" }} class="atch-btn">{t('change-1')}
                 </button>
                 <p id='change-1'>{images.image33 != "" ? images.image33 : ""}</p>
               </td>
@@ -469,9 +472,30 @@ const EditProfile = () => {
                 </button>
                 <button
                   onClick={() => { changeimage('image4', 'image44') }}
-                  style={{ background: "#003C70" }} class="atch-btn">{t('change')}
+                  style={{ background: "#003C70" }} class="atch-btn">{t('change-1')}
                 </button>
                 <p id='change-1'>{images.image44 != "" ? images.image44 : ""}</p>
+              </td>
+            </tr>
+          )
+          }
+          {data.other  && (
+            <tr>
+              <td>{t('img-profile-5')}</td>
+              <td className='att-row'>
+                <button
+                  onClick={() => { openImage(`http://localhost:5002/${data.national_id}/${data.other}`) }}
+                  style={{ background: "#003C70" }} class="atch-btn">{t('open')}
+                </button>
+                <button
+                  onClick={() => { downloadImage(`http://localhost:5002/${data.national_id}/${data.other}`) }}
+                  style={{ background: "#AD8700" }} class="atch-btn">{t('download')}
+                </button>
+                <button
+                  onClick={() => { changeimage('image5', 'image55') }}
+                  style={{ background: "#003C70" }} class="atch-btn">{t('change-1')}
+                </button>
+                <p id='change-1'>{images.image55 != "" ? images.image55 : ""}</p>
               </td>
             </tr>
           )

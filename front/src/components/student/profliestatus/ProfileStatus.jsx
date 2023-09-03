@@ -35,14 +35,18 @@ const ProfileStatus = () => {
           <div className="sub-info">
             <span className='title'>{t('app-status')}</span>
             <span className='inner'>
-              {user.comment !== '' ? " تم تحديد موعد ": null}
+              {user.status == 2 ? " تم تحديد موعد ": user.status == 3 ? " يرجى تعديل البيانات ":  user.status == 1 ? " لم يتم تحديد موعد ": null}
+            </span>
+            <span className='inner'>
+              {user.status == 2 ? user.comment : null}
             </span>
           </div>
         </div>
 
         
-          
-              <h2 style={{ color: "red", direction: "rtl" }}>{user.comment}</h2>
+              <h2 style={{ color: "red", direction: "rtl" }}>
+                {user.status === 2 ||  user.status === 3 ?  user.comment2 : ""}
+                </h2>
             
 
         

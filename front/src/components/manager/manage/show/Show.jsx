@@ -130,42 +130,41 @@ const Show = () => {
             <img src={`http://localhost:5002/${user.national_id}/${user.img}`} alt="img" className='imagee' />
             {user.status == 1 ? (
               <>
-                <p style={{ background: "rgb(35, 175, 110)" }}> تم ارسال معاد المقابله</p>
-                <h2> معاد المقابله</h2>
-                <p style={{ background: "rgb(35, 175, 110) " }}>{user.comment}</p>
+                <button onClick={handelAccept} className='acc'>ارسال معاد المقابله</button>
+                <input
+                  type="date"
+                  value={msg}
+                  onChange={(e) => { SetMsg(e.target.value) }}
+                />
+
+
+
+                <button onClick={handelwait} className='wait-edit'>طلب تعديل البيانات</button>
+                <input
+                  type="text"
+                  placeholder='سبب التعديل'
+                  value={editRes}
+                  onChange={(e) => { SetEditRes(e.target.value) }}
+                />
+
+
               </>
+
             )
               : user.status == 2 ?
                 <>
-                  <button onClick={handelAccept} className='acc'>ارسال معاد المقابله</button>
-                  <input
-                    type="date"
-                    value={msg}
-                    onChange={(e) => { SetMsg(e.target.value) }}
-                  />
-
-
-
-                  <button onClick={handelwait} className='wait-edit'>طلب تعديل البيانات</button>
-                  <input
-                    type="text"
-                    placeholder='سبب التعديل'
-                    value={editRes}
-                    onChange={(e) => { SetEditRes(e.target.value) }}
-                  />
-
-
-
-
-
+                  <p style={{ background: "rgb(35, 175, 110)" }}> تم ارسال معاد المقابله</p>
+                  <h2> معاد المقابله</h2>
+                  <p style={{ background: "rgb(35, 175, 110) " }}>{user.comment}</p>
                 </>
-                : (
+                : user.status == 3 ? (
                   <>
                     <p >يرجى التعديل</p>
                     <h2>سبب التعديل</h2>
-                    <p >{user.comment}</p>
+                    <p >{user.comment2}</p>
                   </>
-                )}
+                ) : null}
+                
           </div>
           <table className="data-table" style={localStorage.getItem('i18nextLng') == "ar" ? { direction: "rtl" } : { direction: "ltr" }}>
             <tr>
@@ -367,6 +366,23 @@ const Show = () => {
                 </button>
                 <button
                   onClick={() => { downloadImage(`http://localhost:5002/${user.national_id}/${user.academic_qualification}`) }}
+                  style={{ background: "#AD8700" }} class="atch-btn">Download
+                </button>
+
+
+              </td>
+            </tr>
+          ) : null}
+          {user.other != 0 ? (
+            <tr>
+              <td> بطاقه الترشيح</td>
+              <td className='att-row'>
+                <button
+                  onClick={() => { openImage(`http://localhost:5002/${user.national_id}/${user.other}`) }}
+                  style={{ background: "#003C70" }} class="atch-btn">Open
+                </button>
+                <button
+                  onClick={() => { downloadImage(`http://localhost:5002/${user.national_id}/${user.other}`) }}
                   style={{ background: "#AD8700" }} class="atch-btn">Download
                 </button>
 

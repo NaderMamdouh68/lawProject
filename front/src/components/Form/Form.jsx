@@ -56,7 +56,7 @@ const Form = () => {
     image2: '',
     image3: '',
     image4: '',
-
+    image5: '',
   })
 
 
@@ -220,6 +220,7 @@ const Form = () => {
     formData.append('image2', images.image2)
     formData.append('image3', images.image3)
     formData.append('image4', images.image4)
+    formData.append('image5', images.image5)
 
     try {
       axios.post('http://localhost:5002/newapp/signup', formData,

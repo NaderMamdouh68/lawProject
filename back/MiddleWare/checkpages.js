@@ -43,8 +43,8 @@ checkpages.post('/checkpage1',
 
             
 
-            const sqlSelect = "SELECT * FROM students WHERE national_id = ? OR email = ?";
-            await query(sqlSelect, [req.body.national_id , req.body.email], async (err, result) => {
+            const sqlSelect = "SELECT * FROM students WHERE national_id = ? OR setNum = ?";
+            await query(sqlSelect, [req.body.national_id , req.body.setNum], async (err, result) => {
                 if (err) {
                     return res.status(400).json({ errors: [{ msg: err }], "msg": "Server Error" });
                 }

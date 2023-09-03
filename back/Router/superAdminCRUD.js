@@ -38,7 +38,6 @@ SuperAdmin.get('/allaaplication',
             if(SuperAdmindetails != 0){
             delete SuperAdmindetails[0].password;
             }
-            console.log(SuperAdmindetails);
             res.status(200).json(SuperAdmindetails);
         } catch (err) {
             res.status(500).json({ msg: "Server Error" });
