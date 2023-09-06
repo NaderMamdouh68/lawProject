@@ -48,6 +48,7 @@ const StudentList = () => {
   // const [filter2, setFilter2] = useState(student);
   // const [filter3, setFilter3] = useState(student);
 
+  console.log(filter)
 
 
   return (
@@ -92,13 +93,15 @@ const StudentList = () => {
             <option value="4">ماجستير</option>
             <option value="5">دكتوراه</option>
           </select>
+          */}
           <select
             onChange={(e) => {
               const filteredStudents = e.target.value === ''
                 ? student
-                : student.filter((item) => item.department_id === parseInt(e.target.value));
+                : student.filter((item) => item.department_name_ar === e.target.value);
               setFilter(filteredStudents);
             }}
+
 
             className='filter'
             name=""
@@ -106,9 +109,9 @@ const StudentList = () => {
           >
             <option value="">القسم</option>
             {department.map((item, index) => (
-              <option value={item.department_id}>{item.department_name_ar}</option>
+              <option value={item.department_name_ar}>{item.department_name_ar}</option>
             ))}
-          </select> */}
+          </select> 
         </div>
         <div className="student-container">
           <table className="data-table">
@@ -117,7 +120,7 @@ const StudentList = () => {
                 <th> التسلسل</th>
                 <th>اسم الطالب</th>
                 {/* <th>رقم الهوية الوطنية</th> */}
-                {/* <th>القسم</th> */}
+                <th>القسم</th>
                 <th> اللغه الاجنبيه الاولي</th>
                 <th> درجه اللغه الاجنبيه الاولي</th>
                 <th> اللغه الاجنبيه الثانيه</th>
@@ -133,7 +136,7 @@ const StudentList = () => {
                   <td>{index + 1}</td>
                   <td>{item.student_name}</td>
                   {/* <td>{item.national_id}</td> */}
-                  {/* <td>{item.department_name_ar}</td> */}
+                  <td>{item.department_name_ar}</td>
                   <td>{item.enDegname}</td>
                   <td>{item.enDeg}</td>
                   <td>{item.enDegname2}</td>
