@@ -16,7 +16,8 @@ const ProgramAndDepartment = () => {
     department_name_ar: ''
   })
   const [error, setErroe] = React.useState("");
-  const [data, setData] = React.useState([])
+  const [data, setData] = React.useState([]);
+  const [err , setErr] = React.useState('');
 
   const [appointment, setAppointment] = React.useState({
     appointment: '',
@@ -71,7 +72,11 @@ const ProgramAndDepartment = () => {
             console.log(res.data)
             window.location.href = '/law/manager/Appointment'
           }).catch((error) => {
-            console.log(error.response.data.errors.msg)
+            console.log(error.response.data.errors[0].msg)
+            if('Students not found !' == error.response.data?.errors[0].msg){
+              setErr("لا يوجد طلاب في قائمه الانتظار")
+            }
+            
           })
       }
     }
@@ -212,6 +217,7 @@ const ProgramAndDepartment = () => {
                 placeholder=' تاريخ الحضور ' />
 
 
+            {err && <h2 style={{color:'red' ,textAlign:"center"}}>{err}</h2>}
 
               <button
                 onClick={addAppointment}
