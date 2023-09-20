@@ -58,7 +58,7 @@ const StudentList = () => {
     <>
       <section className='cotainer-stu'>
         <div className="navv">
-          <h2>الطلاب</h2>
+          {/* <h2>الطلاب</h2> */}
           {/* <select
             onChange={(e) => {
               const filteredStudents = e.target.value === ''
@@ -115,6 +115,31 @@ const StudentList = () => {
               <option value={item.department_name_ar}>{item.department_name_ar}</option>
             ))}
           </select>
+
+          <input
+            type='text'
+            placeholder='بحث بدرجه اللغه الاجنبيه الاولي'
+            className='filter'
+            onChange={(e) => {
+              const filteredStudents = e.target.value === ''
+                ? student
+                : student.filter((item) => +item.enDeg >= parseInt(e.target.value));
+              setFilter(filteredStudents);
+            }}
+          />
+          <input
+            type='text'
+            placeholder='بحث بدرجه اللغه الاجنبيه الثانيه'
+            className='filter'
+            onChange={(e) => {
+              const filteredStudents = e.target.value === ''
+                ? student
+                : student.filter((item) => +item.enDeg2 >= parseInt(e.target.value));
+              setFilter(filteredStudents);
+            }}
+          />
+
+
           <ReactHTMLTableToExcel
             id="test-table-xls-button"
             table="table-to-xls"
