@@ -43,12 +43,12 @@ const Nav = () => {
       <ul>
         
         
-        <li>
+        {/* <li>
           <Link to='/law/manager/Appointment' > المواعيد </Link>
-        </li> 
-        <li>
+        </li>  */}
+        {/* <li>
           <Link to='/law/manager/programsAndDepartments' > تحديد موعد </Link>
-        </li>
+        </li> */}
         <li>
           <Link to='/law/manager' > عرض جميع الطلاب</Link>
         </li>

@@ -7,6 +7,8 @@ import upload from '../MiddleWare/Uplodeimgs.js';
 import fs from 'fs';
 import user from "../MiddleWare/checkStudent.js";
 import checkmanager from "../MiddleWare/checkManager.js";
+import upload2 from "../MiddleWare/Uplodexls.js";
+import xlsx from "xlsx";
 
 
 const manager = express();
@@ -39,6 +41,8 @@ manager.get('/allaaplication',
     application.status,
     application.submission_date,
     application.comment,
+    application.appointment,
+    application.payment_code,
     students.*,
     departments_of_faculty.department_name,
     departments_of_faculty.department_name_ar
@@ -419,7 +423,47 @@ manager.put('/updatestatus/:id',
 
         }
 
-    });
+});
+
+
+manager.put('/updatePayAndDate',
+    upload2.single('file'),
+    async (req, res) => {
+        try {
+            if (!req.file) {
+              return res.status(400).json({ errors: [{ msg: 'No file uploaded' }] });
+            }
+        
+            const workbook = xlsx.readFile(req.file.path);
+            const worksheet = workbook.Sheets[workbook.SheetNames[0]];
+            const data = xlsx.utils.sheet_to_json(worksheet);
+            console.log(data[0].كود_الدفع );
+        
+            for (let i = 0; i < data.length; i++) {
+              const studentId = data[i].student_id;
+              const appointment = data[i].الموعد;
+              const paymentCode = data[i].كود_الدفع;
+              let status = data[i].كود_الدفع === undefined ? 6 : 5;
+        
+              const sqlCheck = "SELECT * FROM application WHERE student_id = ?";
+              const application = await query(sqlCheck, [studentId]);
+        
+              if (!application[0]) {
+                return res.status(404).json({ errors: [{ msg: "Student not found!" }] });
+              }
+        
+              const sqlUpdate = "UPDATE application SET status = ?, appointment = ?, payment_code = ? WHERE student_id = ?";
+              await query(sqlUpdate, [status, appointment, paymentCode, studentId]);
+            }
+        
+            res.status(200).json({ msg: "Status updated successfully" });
+          } catch (err) {
+            console.error(err);
+            res.status(500).json({ errors: [{ msg: "Internal server error" }] });
+          }
+    }
+
+);
 
 
 

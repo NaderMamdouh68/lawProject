@@ -97,7 +97,7 @@ student.get('/studentdetails',
     user,
     async (req, res) => {
         try {
-            const sqlShow = "SELECT application.status, application.submission_date,application.comment, application.comment2 ,students.*, departments_of_faculty.*  FROM application INNER JOIN students ON application.student_id = students.student_id INNER JOIN departments_of_faculty ON application.department_id = departments_of_faculty.department_id  WHERE application.student_id = ?";
+            const sqlShow = "SELECT application.status, application.submission_date,application.comment, application.comment2 ,application.payment_code,application.appointment,students.*, departments_of_faculty.*  FROM application INNER JOIN students ON application.student_id = students.student_id INNER JOIN departments_of_faculty ON application.department_id = departments_of_faculty.department_id  WHERE application.student_id = ?";
             const values = [req.student_id];
 
             const studentdetails = await query(sqlShow, values);

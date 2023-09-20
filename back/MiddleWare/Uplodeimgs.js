@@ -24,18 +24,6 @@ const maxSize = 1 * 1024 * 1024;
 const upload = multer({
     storage: storage,
 
-    // fileFilter: (req, file, cb) => {
-    //     const fileTypes = /jpeg|jpg|png|webp/;
-    //     const extname = fileTypes.test(path.extname(file.originalname).toLowerCase());
-    //     const mimetype = fileTypes.test(file.mimetype);
-
-    //     // if (mimetype && extname) {
-    //     //     return cb(null, true);
-    //     // }else{
-    //     //     cb("Error: Images Only!");
-    //     // }
-
-    // },
 
 
 
@@ -51,5 +39,7 @@ const upload = multer({
     { "name": "image9", maxCount: 1 }, //masters_photo
     { "name": "image10", maxCount: 1 } //equ_photo
 ]);
+
+
 
 export default upload;

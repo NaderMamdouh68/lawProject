@@ -35,10 +35,14 @@ const ProfileStatus = () => {
           <div className="sub-info">
             <span className='title'>{t('app-status')}</span>
             <span className='inner'>
-              {user.status == 2 ? " تم تحديد موعد ": user.status == 3 ? " يرجى تعديل البيانات ":  user.status == 1 ? " لم يتم تحديد موعد ": null}
+              {user.status == 5 ? " تم تحديد موعد ": user.status == 3 ? " يرجى تعديل البيانات ":  user.status == 1 ? " لم يتم تحديد موعد ": user.status == 6 ? " تم رفض الطلب ": null}
             </span>
             <span className='inner'>
               {user.status == 2 ? user.comment : null}
+              {user.status == 5 ? user.appointment : null}
+            </span>
+            <span className='inner'>
+              {user.status == 5 ? <span className='inner' style={{color:"red"}}>كود الدفع : {user.payment_code}</span> : null}
             </span>
           </div>
         </div>

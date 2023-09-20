@@ -109,10 +109,10 @@ const Router = createBrowserRouter([
               path:"",
               element:<StudentList/>
           },
-          {
-            path: "/law/manager/programsAndDepartments",
-            element:<ProgramAndDepartment/>
-          },
+          // {
+          //   path: "/law/manager/programsAndDepartments",
+          //   element:<ProgramAndDepartment/>
+          // },
           {
             path: "/law/manager/Appointment",
             element:<Appointment/>

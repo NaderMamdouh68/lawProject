@@ -3,6 +3,7 @@ import './studentlist.css'
 import axios from 'axios'
 import { Link, useNavigate } from 'react-router-dom';
 import { useState } from 'react';
+import ReactHTMLTableToExcel from 'react-html-table-to-excel';
 
 
 const StudentList = () => {
@@ -50,6 +51,8 @@ const StudentList = () => {
 
   console.log(filter)
 
+  const pdfRef = React.useRef()
+  const [xlsFile, setXlsFile] = useState('')
 
   return (
     <>
@@ -111,15 +114,61 @@ const StudentList = () => {
             {department.map((item, index) => (
               <option value={item.department_name_ar}>{item.department_name_ar}</option>
             ))}
-          </select> 
+          </select>
+          <ReactHTMLTableToExcel
+            id="test-table-xls-button"
+            table="table-to-xls"
+            filename="tablexls"
+            sheet="tablexls"
+            className="add"
+            buttonText="تحميل الجدول في ملف اكسل" />
+
+          <div style={{ display: 'flex', alignItems: 'center' , gap:'10px',flexDirection:'row'}}>
+            <div>
+              <label htmlFor="file" className="add">رفع ملف اكسل</label>
+              <input
+                type='file'
+                style={{ display: 'none' }}
+                id='file'
+                onChange={(e) => {
+                  setXlsFile(e.target.files[0])
+                }}
+              />
+              <p style={{ display: 'inline-block', margin: '0 10px' }}>
+                {xlsFile && xlsFile.name
+                  ? xlsFile.name
+                  : 'لم يتم اختيار ملف'}
+
+              </p>
+            </div>
+            {xlsFile && xlsFile.name &&
+              <button
+              style={{ display: 'inline-block' ,margin:'0 10px' ,alignItems:'center'}}
+                onClick={() => {
+                  if (xlsFile) {
+                    const formData = new FormData();
+                    formData.append('file', xlsFile)
+                    axios.put('http://localhost:5002/manager/updatePayAndDate', formData)
+                      .then((res) => {
+                        console.log(res)
+                        window.location.reload()
+                      })
+                      .catch((err) => {
+                        console.log(err)
+                      })
+                  }
+                }}
+                className="add">تأكيد</button>
+            }
+          </div>
+
         </div>
         <div className="student-container">
-          <table className="data-table">
+          <table className="data-table" >
             <thead>
               <tr>
                 <th> التسلسل</th>
                 <th>اسم الطالب</th>
-                {/* <th>رقم الهوية الوطنية</th> */}
                 <th>القسم</th>
                 <th> اللغه الاجنبيه الاولي</th>
                 <th> درجه اللغه الاجنبيه الاولي</th>
@@ -127,6 +176,8 @@ const StudentList = () => {
                 <th> درجه اللغه الاجنبيه الثانيه</th>
                 <th>حالة الطلب</th>
                 <th>تاريخ التقديم</th>
+                <th>الموعد</th>
+                <th>كود الدفع</th>
                 <th>التفاصيل</th>
               </tr>
             </thead>
@@ -135,18 +186,21 @@ const StudentList = () => {
                 <tr key={item.student_id}>
                   <td>{index + 1}</td>
                   <td>{item.student_name}</td>
-                  {/* <td>{item.national_id}</td> */}
                   <td>{item.department_name_ar}</td>
                   <td>{item.enDegname}</td>
                   <td>{item.enDeg}</td>
                   <td>{item.enDegname2}</td>
                   <td>{item.enDeg2}</td>
                   <td>
-                    {item.status === 1 ? 'قيد الانتظار' :
-                      item.status === 2 ? 'تم ارسال تاريج الحضور' :
-                        item.status === 3 ? 'قيد التعديل' : null}
+                    {+item.status === 1 ? 'قيد الانتظار' :
+                      +item.status === 2 ? 'تم ارسال تاريج الحضور' :
+                        +item.status === 3 ? 'قيد التعديل' : 
+                        +item.status === 5 ? 'تم تحديد الموعد' :
+                        +item.status === 6 ? 'تم الرفض' : null}
                   </td>
                   <td>{item.submission_date.slice(0, 10)}</td>
+                  <td>{item.appointment}</td>
+                  <td>{item.payment_code}</td>
                   <td>
                     <button className='moreinfo'>
                       <Link to={`/law/manager/show/${item.student_id}`} style={{ textDecoration: "none" }}>
@@ -154,6 +208,55 @@ const StudentList = () => {
                       </Link>
                     </button>
                   </td>
+                </tr>
+              )))}
+            </tbody>
+          </table>
+          <table className="data-table" ref={pdfRef} id='table-to-xls' style={{ display: 'none' }}>
+            <thead>
+              <tr>
+                <th> التسلسل</th>
+                <th>student_id</th>
+                <th>اسم الطالب</th>
+                <th>القسم</th>
+                <th> اللغه الاجنبيه الاولي</th>
+                <th> درجه اللغه الاجنبيه الاولي</th>
+                <th> اللغه الاجنبيه الثانيه</th>
+                <th> درجه اللغه الاجنبيه الثانيه</th>
+                <th>حالة الطلب</th>
+                <th>تاريخ التقديم</th>
+                <th>الموعد</th>
+                <th>كود_الدفع</th>
+              </tr>
+            </thead>
+            <tbody>
+              {(filter.map((item, index) => (
+                <tr key={item.student_id}>
+                  <td>{index + 1}</td>
+                  <td>{item.student_id}</td>
+                  <td>{item.student_name}</td>
+                  <td>{item.department_name_ar}</td>
+                  <td>{item.enDegname}</td>
+                  <td>{item.enDeg}</td>
+                  <td>{item.enDegname2}</td>
+                  <td>{item.enDeg2}</td>
+                  <td>
+                    {+item.status === 1 ? 'قيد الانتظار' :
+                      +item.status === 2 ? 'تم ارسال تاريج الحضور' :
+                        +item.status === 3 ? 'قيد التعديل' : 
+                        +item.status === 5 ? 'تم تحديد الموعد' :
+                        +item.status === 6 ? 'تم الرفض' : null}
+                  </td>
+                  <td>{item.submission_date.slice(0, 10)}</td>
+                  <td>{item.appointment}</td>
+                  <td>{item.payment_code}</td>
+                  {/* <td>
+                    <button className='moreinfo'>
+                      <Link to={`/law/manager/show/${item.student_id}`} style={{ textDecoration: "none" }}>
+                        مزيد من التفاصيل
+                      </Link>
+                    </button>
+                  </td> */}
                 </tr>
               )))}
             </tbody>
