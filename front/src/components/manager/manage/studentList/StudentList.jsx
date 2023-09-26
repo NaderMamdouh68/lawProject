@@ -116,7 +116,7 @@ const StudentList = () => {
             ))}
           </select>
 
-          <input
+          {/* <input
             type='text'
             placeholder='بحث بدرجه اللغه الاجنبيه الاولي'
             className='filter'
@@ -137,15 +137,24 @@ const StudentList = () => {
                 : student.filter((item) => +item.enDeg2 >= parseInt(e.target.value));
               setFilter(filteredStudents);
             }}
-          />
+          /> */}
 
+
+          <ReactHTMLTableToExcel
+            id="test-table-xls-button"
+            table="table-to-xls2"
+            filename="tablexls"
+            sheet="tablexls"
+            className="btt02 add"
+            buttonText="تحميل بيانات الطلاب" />
 
           <ReactHTMLTableToExcel
             id="test-table-xls-button"
             table="table-to-xls"
             filename="tablexls"
             sheet="tablexls"
-            className="add"
+            className=" add"
+            
             buttonText="تحميل الجدول في ملف اكسل" />
 
           <div style={{ display: 'flex', alignItems: 'center' , gap:'10px',flexDirection:'row'}}>
@@ -273,6 +282,79 @@ const StudentList = () => {
                         +item.status === 6 ? 'تم الرفض' : null}
                   </td>
                   <td>{item.submission_date.slice(0, 10)}</td>
+                  <td>{item.appointment}</td>
+                  <td>{item.payment_code}</td>
+                  {/* <td>
+                    <button className='moreinfo'>
+                      <Link to={`/law/manager/show/${item.student_id}`} style={{ textDecoration: "none" }}>
+                        مزيد من التفاصيل
+                      </Link>
+                    </button>
+                  </td> */}
+                </tr>
+              )))}
+            </tbody>
+          </table>
+          <table className="data-table" ref={pdfRef} id='table-to-xls2' style={{ display: 'none' }}>
+            <thead>
+              <tr>
+                <th> التسلسل</th>
+                <th>student_id</th>
+                <th>اسم الطالب</th>
+                <th>القسم</th>
+                <th> اللغه الاجنبيه الاولي</th>
+                <th> درجه اللغه الاجنبيه الاولي</th>
+                <th> اللغه الاجنبيه الثانيه</th>
+                <th> درجه اللغه الاجنبيه الثانيه</th>
+                <th> البريد الالكترونى </th>
+                <th>رقم الهاتف</th>
+                <th> رقم الهاتف الارضي </th>
+                <th> الجنسية </th>
+                <th> تاريخ الميلاد </th>
+                <th> رقم الجلوس </th>
+                <th> المدرسة الثانوية </th>
+                <th> المجموع الكلي في الثانويه العامه </th>
+                <th> وظيفة الاب </th>
+                <th> رقم الاب </th>
+                <th> النوع </th>
+                <th>العنوان</th>
+                <th>حالة الطلب</th>
+                <th>تاريخ التقديم</th>
+                <th>الموعد</th>
+                <th>كود_الدفع</th>
+              </tr>
+            </thead>
+            <tbody>
+              {(filter.map((item, index) => (
+                <tr key={item.student_id}>
+                  <td>{index + 1}</td>
+                  <td>{item.student_id}</td>
+                  <td>{item.student_name}</td>
+                  <td>{item.department_name_ar}</td>
+                  <td>{item.enDegname}</td>
+                  <td>{item.enDeg}</td>
+                  <td>{item.enDegname2}</td>
+                  <td>{item.enDeg2}</td>
+                  <td>{item.email}</td>
+                  <td>{item.phonenumber}</td>
+                  <td>{item.phoneArd}</td>
+                  <td>{item.nationality}</td>
+                  <td>{item.birthdate?.slice(0, 10)}</td>
+                  <td>{item.setNum}</td>
+                  <td>{item.school}</td>
+                  <td>{item.totalDeg}</td>
+                  <td>{item.dadJob}</td>
+                  <td>{item.phoneDad}</td>
+                  <td>{item.gender}</td>
+                  <td>{item.adress}</td>
+                  <td>
+                    {+item.status === 1 ? 'قيد الانتظار' :
+                      +item.status === 2 ? 'تم ارسال تاريج الحضور' :
+                        +item.status === 3 ? 'قيد التعديل' :
+                          +item.status === 5 ? 'تم تحديد الموعد' :
+                            +item.status === 6 ? 'تم الرفض' : null}
+                  </td>
+                  <td>{item.submission_date?.slice(0, 10)}</td>
                   <td>{item.appointment}</td>
                   <td>{item.payment_code}</td>
                   {/* <td>

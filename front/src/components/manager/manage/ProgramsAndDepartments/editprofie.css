@@ -35,6 +35,16 @@
 .add{
     border: 2px solid #003C70 !important;
 }
+.btt02{
+    background: #ad8700 !important;
+    color: #fff;
+    border: 2px solid #ad8700 !important
+}
+.btt02:hover{
+    background-color: #fff !important;
+    color: #ad8700 !important;
+    border: 2px solid #ad8700 !important
+}
 .add:hover {
     background-color: #fff;
     color: #003C70;
