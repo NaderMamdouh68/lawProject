@@ -299,7 +299,6 @@ const StudentList = () => {
             <thead>
               <tr>
                 <th> التسلسل</th>
-                <th>student_id</th>
                 <th>اسم الطالب</th>
                 <th>القسم</th>
                 <th> اللغه الاجنبيه الاولي</th>
@@ -328,7 +327,6 @@ const StudentList = () => {
               {(filter.map((item, index) => (
                 <tr key={item.student_id}>
                   <td>{index + 1}</td>
-                  <td>{item.student_id}</td>
                   <td>{item.student_name}</td>
                   <td>{item.department_name_ar}</td>
                   <td>{item.enDegname}</td>
